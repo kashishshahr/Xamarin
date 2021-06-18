@@ -55,20 +55,20 @@
 	.section	.rodata.map_aname.9,"aMS",%progbits,1
 	.type	.L.map_aname.9, %object
 .L.map_aname.9:
-	.asciz	"Notes.Android"
-	.size	.L.map_aname.9, 14
+	.asciz	"Xamarin.AndroidX.SavedState"
+	.size	.L.map_aname.9, 28
 
 	.section	.rodata.map_aname.10,"aMS",%progbits,1
 	.type	.L.map_aname.10, %object
 .L.map_aname.10:
-	.asciz	"Xamarin.AndroidX.SavedState"
-	.size	.L.map_aname.10, 28
+	.asciz	"Xamarin.Google.Android.Material"
+	.size	.L.map_aname.10, 32
 
 	.section	.rodata.map_aname.11,"aMS",%progbits,1
 	.type	.L.map_aname.11, %object
 .L.map_aname.11:
-	.asciz	"Xamarin.Google.Android.Material"
-	.size	.L.map_aname.11, 32
+	.asciz	"Notes.Android"
+	.size	.L.map_aname.11, 14
 
 	.section	.rodata.map_aname.12,"aMS",%progbits,1
 	.type	.L.map_aname.12, %object

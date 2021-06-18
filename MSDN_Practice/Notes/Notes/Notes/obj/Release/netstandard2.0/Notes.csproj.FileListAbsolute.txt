@@ -5,6 +5,7 @@ E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\bin\Release\netstandard2.0
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\App.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\AppShell.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\Views\AboutPage.xaml.g.cs
+E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\Views\NoteEntryPage.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\Views\NotesPage.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\Notes.AssemblyInfoInputs.cache
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Release\netstandard2.0\Notes.AssemblyInfo.cs

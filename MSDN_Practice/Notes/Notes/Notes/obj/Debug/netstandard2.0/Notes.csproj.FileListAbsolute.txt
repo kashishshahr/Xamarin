@@ -2,10 +2,10 @@ E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\bin\Debug\netstandard2.0\N
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\bin\Debug\netstandard2.0\Notes.dll
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\bin\Debug\netstandard2.0\ref\Notes.dll
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\bin\Debug\netstandard2.0\Notes.pdb
-E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.AssemblyReference.cache
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\App.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\NoteEntryPage.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Views\NotesPage.xaml.g.cs
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.AssemblyInfoInputs.cache
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.AssemblyInfo.cs

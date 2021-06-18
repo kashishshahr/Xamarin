@@ -5,12 +5,12 @@
     Changes to this file may cause incorrect behavior and will be lost if
     the contents are regenerated.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.krs.notes" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
-  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="29" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.krs.notes" android:installLocation="preferExternal" android:versionCode="1" android:versionName="1.0">
+  <uses-sdk android:minSdkVersion="25" android:targetSdkVersion="29" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:icon="@mipmap/notes_icon" android:label="Notes_KRS" android:theme="@style/MainTheme">
+  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:icon="@mipmap/notes_icon" android:label="Notes_DB_KRS" android:theme="@style/MainTheme">
     <activity android:name="crc64888fdb5329cc14ba.MainActivity" android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/notes_icon" android:label="Notes" android:theme="@style/MainTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

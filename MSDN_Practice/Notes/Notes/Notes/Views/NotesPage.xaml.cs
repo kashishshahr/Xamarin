@@ -1,56 +1,41 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
+using Notes.Models;
 using Xamarin.Forms;
 
 namespace Notes.Views
 {
     public partial class NotesPage : ContentPage
     {
-        string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes_xamarin.txt");
         public NotesPage()
         {
             InitializeComponent();
-            if (File.Exists(_fileName))
-            {
-                editor.Text = File.ReadAllText(_fileName);
-            }
         }
-
-        private void OnSaveBtnClicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            File.WriteAllText(_fileName, editor.Text);
-            DisplayAlert("Alert",
-                        "Saved",
-                        "OK",_fileName);
-        }
+            base.OnAppearing();
 
-        private void OnDeleteBtnClicked(object sender, EventArgs e)
+            // Retrieve all the notes from the database, and set them as the
+            // data source for the CollectionView.
+            collectionView.ItemsSource = await App.Database.GetNotesAsync();
+        }
+        async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (File.Exists(_fileName))
+            if (e.CurrentSelection != null)
             {
-                File.Delete(_fileName);
-                DisplayAlert("Alert",
-                        "Deleted",
-                        "OK");
+                // Navigate to the NoteEntryPage, passing the ID as a query parameter.
+                Note note = (Note)e.CurrentSelection.FirstOrDefault();
+                await Shell.Current.GoToAsync($"{nameof(NoteEntryPage)}?{nameof(NoteEntryPage.ItemId)}={note.ID.ToString()}");
             }
-            editor.Text = string.Empty;
-            editor.BackgroundColor = Color.White;
-
         }
-
-        private void OnTextChange(object sender, TextChangedEventArgs e)
+        async void OnAddClicked(object sender, EventArgs e)
         {
-            if (editor.Text == string.Empty)
-            {
-                editor.BackgroundColor = Color.White;
+            // Navigate to the NoteEntryPage, without passing any data.
+            await Shell.Current.GoToAsync(nameof(NoteEntryPage));
 
-            }
-            else
-            {
-                editor.BackgroundColor = Color.Black;
-            }
         }
+        
     }
 }
