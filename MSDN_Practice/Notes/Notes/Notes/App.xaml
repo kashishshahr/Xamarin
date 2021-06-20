@@ -3,4 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.App">
 
+    <!-- Resources used by multiple pages in the application -->
+    <Application.Resources>
+        <Thickness x:Key="PageMargin">20</Thickness>
+        
+        <!--Colors-->
+        <Color x:Key="AppPrimaryColor">#1976D2</Color>
+        <Color x:Key="AppBackgroundColor">AliceBlue</Color>
+        <Color x:Key="PrimaryColor">Black</Color>
+        <Color x:Key="SecondaryColor">yellow</Color>
+        <Color x:Key="TertiaryColor">Silver</Color>
+        <Color x:Key="TextColor">Brown</Color>
+
+        <Style TargetType="ContentPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor"
+                     Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"></Setter>
+            <Setter Property="BackgroundColor"  Value="{StaticResource AppPrimaryColor}"></Setter>
+            <Setter Property="TextColor"
+                    Value="{StaticResource SecondaryColor}" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+        </Style>
+    </Application.Resources>
 </Application>

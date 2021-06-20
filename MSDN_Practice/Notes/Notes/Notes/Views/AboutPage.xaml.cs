@@ -16,5 +16,7 @@ namespace Notes.Views
             // Launch the specified URL in the system browser.
             await Launcher.OpenAsync("https://aka.ms/xamarin-quickstart");
         }
+
+        
     }
 }

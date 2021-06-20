@@ -14,3 +14,4 @@ E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\X
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.dll
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\ref\Notes.dll
 E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.pdb
+E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes\Notes\obj\Debug\netstandard2.0\Notes.csproj.AssemblyReference.cache

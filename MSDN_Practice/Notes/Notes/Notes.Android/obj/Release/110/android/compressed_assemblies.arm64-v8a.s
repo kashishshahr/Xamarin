@@ -53,7 +53,7 @@
 
 	/* 5: Notes.dll */
 	/* uncompressed_file_size */
-	.word	24064
+	.word	31232
 	/* loaded */
 	.byte	0
 	/* data */

@@ -73,7 +73,7 @@
 
 	/* 5: Notes.dll */
 	/* uncompressed_file_size */
-	.long	24064
+	.long	31232
 	/* loaded */
 	.byte	0
 	/* data */

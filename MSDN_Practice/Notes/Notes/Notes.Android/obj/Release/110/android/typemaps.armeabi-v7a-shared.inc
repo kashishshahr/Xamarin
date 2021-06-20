@@ -67,26 +67,26 @@
 	.section	.rodata.map_aname.11,"aMS",%progbits,1
 	.type	.L.map_aname.11, %object
 .L.map_aname.11:
-	.asciz	"Notes.Android"
-	.size	.L.map_aname.11, 14
+	.asciz	"Xamarin.AndroidX.Lifecycle.Common"
+	.size	.L.map_aname.11, 34
 
 	.section	.rodata.map_aname.12,"aMS",%progbits,1
 	.type	.L.map_aname.12, %object
 .L.map_aname.12:
-	.asciz	"Xamarin.AndroidX.Lifecycle.Common"
-	.size	.L.map_aname.12, 34
+	.asciz	"Xamarin.Forms.Platform.Android"
+	.size	.L.map_aname.12, 31
 
 	.section	.rodata.map_aname.13,"aMS",%progbits,1
 	.type	.L.map_aname.13, %object
 .L.map_aname.13:
-	.asciz	"Xamarin.Forms.Platform.Android"
-	.size	.L.map_aname.13, 31
+	.asciz	"Xamarin.AndroidX.Activity"
+	.size	.L.map_aname.13, 26
 
 	.section	.rodata.map_aname.14,"aMS",%progbits,1
 	.type	.L.map_aname.14, %object
 .L.map_aname.14:
-	.asciz	"Xamarin.AndroidX.Activity"
-	.size	.L.map_aname.14, 26
+	.asciz	"Notes.Android"
+	.size	.L.map_aname.14, 14
 
 	.section	.rodata.map_aname.15,"aMS",%progbits,1
 	.type	.L.map_aname.15, %object
