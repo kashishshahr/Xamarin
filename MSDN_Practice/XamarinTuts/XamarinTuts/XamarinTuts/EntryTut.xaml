@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTuts.EntryTut">
+    <StackLayout Margin="20,35,20,20">
+        <Label>Entry Tutorial</Label>
+        <Entry Placeholder="Enter text"
+        TextChanged="OnEntryTextChanged"
+       Completed="OnEntryCompleted" 
+            />
+        <Entry Placeholder="Enter password"
+       MaxLength="15"
+       IsSpellCheckEnabled="false"
+       IsTextPredictionEnabled="false"
+       IsPassword="true" />
+        <Label x:Name="label" TextColor="Gray"></Label>
+        <Label x:Name="label1" TextColor="Green"></Label>
+    </StackLayout>
+</ContentPage>

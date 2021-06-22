@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StackLayoutTutorial.MainPage">
+    <StackLayout Margin="20,35,20,25">
+        <Label Text="Horizontal" TextColor="Red"/>
+        <Label Text="Start"
+       HorizontalOptions="Start"
+       BackgroundColor="Green"/>
+        <Label Text="Center"
+       HorizontalOptions="Center"
+       BackgroundColor="Green"/>
+        <Label Text="End"
+       HorizontalOptions="End"
+       BackgroundColor="Green"/>
+        <Label Text="Fill"
+       HorizontalOptions="Fill"
+       BackgroundColor="Green"/>
+        <!--ss-->
+        <Label Text="Vertical and expanded" TextColor="Red"/>
+        <Label Text="StartAndExpand"
+                VerticalOptions="StartAndExpand"
+                BackgroundColor="DarkOliveGreen"/>
+        <Label Text="CenterAndExpand"
+       VerticalOptions="CenterAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+        <Label Text="EndAndExpand"
+       VerticalOptions="EndAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+        <Label Text="FillAndExpand"
+       VerticalOptions="FillAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+
+        <Label Text="Vertical" TextColor="Red"/>
+        <Label Text="Start"
+       VerticalOptions="Start"
+       BackgroundColor="Green"/>
+        <Label Text="Center"
+       VerticalOptions="Center"
+       BackgroundColor="Green"/>
+        <Label Text="End"
+       VerticalOptions="End"
+       BackgroundColor="Green"/>
+        <Label Text="Fill"
+       VerticalOptions="Fill"
+       BackgroundColor="Green"/>
+        <!--ss-->
+        <Label Text="Horizontal and expanded" TextColor="Red" BackgroundColor="Black"/>
+        <Label Text="StartAndExpand"
+                HorizontalOptions="StartAndExpand"
+                BackgroundColor="DarkOliveGreen"/>
+        <Label Text="CenterAndExpand"
+       HorizontalOptions="CenterAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+        <Label Text="EndAndExpand"
+       HorizontalOptions="EndAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+        <Label Text="FillAndExpand"
+       HorizontalOptions="FillAndExpand"
+       BackgroundColor="DarkOliveGreen"/>
+
+
+
+    </StackLayout>
+</ContentPage>
