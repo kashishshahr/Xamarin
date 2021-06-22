@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinTuts.PopupsTutorial"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout Margin="20,35,20,20">
+        <Button Clicked="OnDisplayAlertButtonClicked" Text="Display alert" />
+        <Button Clicked="OnDisplayAlertQuestionButtonClicked" Text="Display alert question" />
+        <Button Clicked="OnDisplayActionSheetButtonClicked" Text="Display action sheet" />
+    </StackLayout>
+</ContentPage>

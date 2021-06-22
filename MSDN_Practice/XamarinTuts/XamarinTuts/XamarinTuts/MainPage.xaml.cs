@@ -54,6 +54,11 @@ namespace XamarinTuts
             await Navigation.PushAsync(new ImageTutorial());
 
         }
+        private async void PopUpNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PopupsTutorial());
+
+        }
 
         private async void GridNavigationButton_OnClicked(object sender, EventArgs e)
         {
@@ -63,6 +68,12 @@ namespace XamarinTuts
         private async void ListViewNavigationButton_OnClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CollectionView());
+
+        }
+
+        private async void AppLifeCycleNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AppLifeCycle());
 
         }
     }

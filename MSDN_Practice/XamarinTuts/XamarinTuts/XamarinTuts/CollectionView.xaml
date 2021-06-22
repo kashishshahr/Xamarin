@@ -34,7 +34,6 @@
                             Grid.Column="1"
                             Text="{Binding Location}"
                             VerticalOptions="End" />
-
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

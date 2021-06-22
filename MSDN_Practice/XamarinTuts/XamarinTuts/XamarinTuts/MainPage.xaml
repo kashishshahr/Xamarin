@@ -19,5 +19,7 @@
         <Button Clicked="ImageNavigationButton_OnClicked" Text="Image Tutorial" />
         <Button Clicked="GridNavigationButton_OnClicked" Text="Grid Tutorial" />
         <Button Clicked="ListViewNavigationButton_OnClicked" Text="CollectionView Tutorial" />
+        <Button Clicked="PopUpNavigationButton_OnClicked" Text="Popup Tutorial" />
+        <Button Clicked="AppLifeCycleNavigationButton_OnClicked" Text="AppLifeCycle Tutorial" />
     </StackLayout>
 </ContentPage>
