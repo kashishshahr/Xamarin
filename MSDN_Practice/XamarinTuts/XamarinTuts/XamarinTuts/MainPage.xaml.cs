@@ -48,5 +48,22 @@ namespace XamarinTuts
         {
             await Navigation.PushAsync(new EditorTutorial());
         }
+
+        private async void ImageNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ImageTutorial());
+
+        }
+
+        private async void GridNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new GridTutorial());
+        }
+
+        private async void ListViewNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CollectionView());
+
+        }
     }
 }

@@ -1,23 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinTuts.MainPage">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinTuts.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <StackLayout Margin="20,35,20,20">
-        <Button Text="Click me2" 
-                Clicked="OnButtonClicked"
-                TextColor="Blue"
-                BackgroundColor="Aqua"
-                BorderColor="Red"
-                BorderWidth="5"
-                CornerRadius="5"
-                WidthRequest="150"
-                HeightRequest="75"
-                />
-        <Button Text="EntryTut"
-                Clicked="NavigateButton_OnClicked"
-                />
-        <Button Text="EditorialTut"
-                Clicked="EditorialNavigationButton_OnClicked"
-                />
+        <Button
+            BackgroundColor="Aqua"
+            BorderColor="Red"
+            BorderWidth="5"
+            Clicked="OnButtonClicked"
+            CornerRadius="5"
+            HeightRequest="75"
+            Text="Click me2"
+            TextColor="Blue"
+            WidthRequest="150" />
+        <Button Clicked="NavigateButton_OnClicked" Text="EntryTut" />
+        <Button Clicked="EditorialNavigationButton_OnClicked" Text="EditorialTut" />
+        <Button Clicked="ImageNavigationButton_OnClicked" Text="Image Tutorial" />
+        <Button Clicked="GridNavigationButton_OnClicked" Text="Grid Tutorial" />
+        <Button Clicked="ListViewNavigationButton_OnClicked" Text="CollectionView Tutorial" />
     </StackLayout>
 </ContentPage>
