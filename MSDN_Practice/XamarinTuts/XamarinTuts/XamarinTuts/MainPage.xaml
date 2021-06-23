@@ -21,5 +21,6 @@
         <Button Clicked="ListViewNavigationButton_OnClicked" Text="CollectionView Tutorial" />
         <Button Clicked="PopUpNavigationButton_OnClicked" Text="Popup Tutorial" />
         <Button Clicked="AppLifeCycleNavigationButton_OnClicked" Text="AppLifeCycle Tutorial" />
+        <Button Clicked="LocalDataBaseNavigationButton_OnClicked" Text="LocalDatabase Tutorial" />
     </StackLayout>
 </ContentPage>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinTuts.LocalDatabaseTutorial"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout Margin="20,35,20,20">
+            <Entry x:Name="nameEntry" Placeholder="Enter your name" />
+            <Entry x:Name="ageEntry" Placeholder="Enter your age" />
+            <Button Clicked="OnButtonClicked" Text="Add to Database" />
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label
+                                FontSize="Large"
+                                Text="{Binding Name}"
+                                TextColor="Red" />
+                            <Label
+                                FontSize="Medium"
+                                Text="{Binding Age}"
+                                TextColor="Black" />
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

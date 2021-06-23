@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WebApiTutorial.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout Margin="20,35,20,20">
+        <Button Clicked="OnButtonClicked" Text="Get Repositary Data" />
+        <CollectionView x:Name="collectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label FontSize="Medium" Text="{Binding Name}" />
+                        <Label
+                            FontSize="Small"
+                            Text="{Binding Description}"
+                            TextColor="Silver" />
+                        <Label
+                            FontSize="Caption"
+                            Text="{Binding GitHubHomeUrl}"
+                            TextColor="Gray" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

@@ -13,6 +13,7 @@ namespace XamarinTuts
         public MainPage()
         {
             InitializeComponent();
+            
         }
 
         bool flag = true;
@@ -74,6 +75,12 @@ namespace XamarinTuts
         private async void AppLifeCycleNavigationButton_OnClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AppLifeCycle());
+
+        }
+
+        private  async void LocalDataBaseNavigationButton_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LocalDatabaseTutorial());
 
         }
     }
