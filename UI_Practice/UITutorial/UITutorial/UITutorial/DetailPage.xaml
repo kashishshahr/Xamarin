@@ -115,150 +115,152 @@
                                     ControlTemplate="{StaticResource CustomTab}"
                                     Text="Overview"
                                     TextColorSelected="Orange">
+                                    <ScrollView Orientation="Vertical">
 
-                                    <StackLayout BackgroundColor="White">
+                                        <StackLayout BackgroundColor="White">
 
-                                        <Grid BackgroundColor="White">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout
-                                                Grid.Column="0"
-                                                HeightRequest="65"
-                                                VerticalOptions="Start">
+                                            <Grid BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout
+                                                    Grid.Column="0"
+                                                    HeightRequest="65"
+                                                    VerticalOptions="Start">
 
-                                                <Grid BackgroundColor="White">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
-                                                    </Grid.RowDefinitions>
+                                                    <Grid BackgroundColor="White">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
 
-                                                    <StackLayout
-                                                        Grid.RowSpan="2"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
+                                                        <StackLayout
+                                                            Grid.RowSpan="2"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
 
-                                                        <Image
-                                                            Aspect="AspectFit"
-                                                            HeightRequest="40"
-                                                            Source="price.png"
-                                                            VerticalOptions="CenterAndExpand" />
+                                                            <Image
+                                                                Aspect="AspectFit"
+                                                                HeightRequest="40"
+                                                                Source="price.png"
+                                                                VerticalOptions="CenterAndExpand" />
 
-                                                    </StackLayout>
-                                                    <StackLayout
-                                                        Grid.Column="1"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            Text="PRICE"
-                                                            TextColor="DarkGray"
-                                                            VerticalOptions="EndAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout
-                                                        Grid.Row="1"
-                                                        Grid.Column="1"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
-
-                                                        <StackLayout Orientation="Horizontal">
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Column="1"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
                                                             <Label
-                                                                FontAttributes="None"
-                                                                Text="from"
-                                                                TextColor="Black"
+                                                                FontAttributes="Bold"
+                                                                Text="PRICE"
+                                                                TextColor="DarkGray"
                                                                 VerticalOptions="EndAndExpand" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
+
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label
+                                                                    FontAttributes="None"
+                                                                    Text="from"
+                                                                    TextColor="Black"
+                                                                    VerticalOptions="EndAndExpand" />
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="21"
+                                                                    Text="$50"
+                                                                    TextColor="Black"
+                                                                    VerticalOptions="EndAndExpand" />
+                                                            </StackLayout>
+
+
+                                                        </StackLayout>
+
+                                                    </Grid>
+
+
+                                                </StackLayout>
+
+                                                <!--  ||||||||  -->
+
+                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    HeightRequest="65"
+                                                    VerticalOptions="Start">
+
+                                                    <Grid BackgroundColor="White">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <StackLayout
+                                                            Grid.RowSpan="2"
+                                                            Grid.Column="0"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
+
+                                                            <Image
+                                                                Aspect="AspectFit"
+                                                                HeightRequest="40"
+                                                                Source="time.png"
+                                                                VerticalOptions="CenterAndExpand" />
+
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Column="1"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                Text="DURATION"
+                                                                TextColor="DarkGray"
+                                                                VerticalOptions="EndAndExpand" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            HeightRequest="100"
+                                                            VerticalOptions="Start">
                                                             <Label
                                                                 FontAttributes="Bold"
                                                                 FontSize="21"
-                                                                Text="$50"
+                                                                Text="3 hours"
                                                                 TextColor="Black"
                                                                 VerticalOptions="EndAndExpand" />
+
+
+
                                                         </StackLayout>
 
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Grid>
 
-                                                    </StackLayout>
-
-                                                </Grid>
 
 
+
+                                            <StackLayout Margin="25,45,20,5">
+                                                <Label
+                                                    FontSize="16"
+                                                    Text="This is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your descriptionThis is test label should be your description.This is test label should be your descriptionThis is test label should be your description"
+                                                    TextColor="Black" />
                                             </StackLayout>
-
-                                            <!--  ||||||||  -->
-
-                                            <StackLayout
-                                                Grid.Column="1"
-                                                HeightRequest="65"
-                                                VerticalOptions="Start">
-
-                                                <Grid BackgroundColor="White">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <StackLayout
-                                                        Grid.RowSpan="2"
-                                                        Grid.Column="0"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
-
-                                                        <Image
-                                                            Aspect="AspectFit"
-                                                            HeightRequest="40"
-                                                            Source="time.png"
-                                                            VerticalOptions="CenterAndExpand" />
-
-                                                    </StackLayout>
-                                                    <StackLayout
-                                                        Grid.Column="1"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            Text="DURATION"
-                                                            TextColor="DarkGray"
-                                                            VerticalOptions="EndAndExpand" />
-                                                    </StackLayout>
-                                                    <StackLayout
-                                                        Grid.Row="1"
-                                                        Grid.Column="1"
-                                                        HeightRequest="100"
-                                                        VerticalOptions="Start">
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            FontSize="21"
-                                                            Text="3 hours"
-                                                            TextColor="Black"
-                                                            VerticalOptions="EndAndExpand" />
-
-
-
-                                                    </StackLayout>
-
-                                                </Grid>
-                                            </StackLayout>
-                                        </Grid>
-
-
-
-
-                                        <StackLayout>
-                                            <Label
-                                                FontSize="16"
-                                                Text="This is test label should be your description.This is test label should be your descriptionThis is test label should be your description"
-                                                TextColor="Black" />
                                         </StackLayout>
-                                    </StackLayout>
 
+                                    </ScrollView>
 
 
                                 </xyt:TabViewItem>

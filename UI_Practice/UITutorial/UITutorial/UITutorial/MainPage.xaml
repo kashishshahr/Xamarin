@@ -36,11 +36,13 @@
                             WidthRequest="180">
                             <Grid>
                                 <StackLayout BackgroundColor="Black">
+
                                     <Image
                                         Aspect="AspectFill"
                                         HeightRequest="350"
                                         Opacity="0.6"
                                         Source="{Binding ImageSource}" />
+
                                 </StackLayout>
                                 <StackLayout Margin="0,0,0,10">
                                     <Image
@@ -84,6 +86,7 @@
                 FontSize="24"
                 Text="Feeling Adventurous?"
                 TextColor="Black" />
+
             <Label
                 Margin="15"
                 FontSize="18"
@@ -95,6 +98,7 @@
         <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
             <StackLayout Margin="10" WidthRequest="100">
                 <ImageButton
+                    Clicked="OnTapGestureRecognizerTapped"
                     HeightRequest="30"
                     HorizontalOptions="Center"
                     Rotation="-50"
