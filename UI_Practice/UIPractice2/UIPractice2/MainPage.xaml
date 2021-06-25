@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="UIPractice2.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamain.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:UIPractice2.CustomRenderer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackLayout Padding="0" BackgroundColor="LightGray">
+        <Grid>
+            <StackLayout Margin="0" Padding="0">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="LightPink"
+                    HeightRequest="150"
+                    HorizontalOptions="FillAndExpand">
+                    <Image
+                        Margin="0"
+                        Aspect="AspectFill"
+                        Source="https://images.pexels.com/photos/4064432/pexels-photo-4064432.jpeg" />
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="15,110,15,0">
+                <Frame
+                    BackgroundColor="White"
+                    HeightRequest="480"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Margin="0,0,0,0">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="SIGN IN"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <StackLayout Margin="0,25,0,0">
+                            <Frame
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                BorderColor="DarkGray"
+                                CornerRadius="50"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame
+                                        Margin="7"
+                                        Padding="0"
+                                        BackgroundColor="AliceBlue"
+                                        CornerRadius="50"
+                                        HeightRequest="35"
+                                        HorizontalOptions="Start"
+                                        WidthRequest="35">
+                                        <Image Margin="2" Source="https://th.bing.com/th/id/OIP.scghD4oqcqaRnbv4VyrSAAHaHa?pid=ImgDet" />
+                                    </Frame>
+
+
+
+                                    <local:MyCustomEntry
+                                        Margin="0,0,15,0"
+                                        HorizontalOptions="FillAndExpand"
+                                        Placeholder="Email"
+                                        TextColor="HotPink" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Margin="0,20,0,0"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                BorderColor="DarkGray"
+                                CornerRadius="50"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame
+                                        Margin="7"
+                                        Padding="0"
+                                        BackgroundColor="AliceBlue"
+                                        CornerRadius="50"
+                                        HeightRequest="35"
+                                        HorizontalOptions="Start"
+                                        WidthRequest="35">
+
+                                        <Image Margin="5" Source="https://cdn.onlinewebfonts.com/svg/img_522934.png" />
+
+                                    </Frame>
+
+                                    <StackLayout HeightRequest="50" Orientation="Horizontal">
+                                        <local:MyCustomEntry
+                                            Margin="0,0,15,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsPassword="True"
+                                            Placeholder="Password"
+                                            TextColor="HotPink" />
+                                        <Image
+                                            Margin="120,8,5,8"
+                                            Aspect="AspectFit"
+                                            Source="https://cdn3.iconfinder.com/data/icons/show-and-hide-password/100/show_hide_password-08-512.png" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox IsChecked="False" Color="HotPink" />
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                Text="Remember me"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="Forgot Password"
+                                TextColor="HotPink"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Button
+                            BackgroundColor="Purple"
+                            CornerRadius="30"
+                            Text="Sign In"
+                            TextColor="White" />
+
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                Text="Still Not Connected ?"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Text="Sign Up"
+                                TextColor="HotPink"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Grid>
+                                <BoxView
+                                    Margin="50"
+                                    BackgroundColor="DarkGray"
+                                    HeightRequest="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="130" />
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="White"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="30"
+                                    HeightRequest="50"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Small"
+                                        HorizontalTextAlignment="Center"
+                                        Text="OR"
+                                        TextColor="DarkGray"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+                            </Grid>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="#395698"
+                                    CornerRadius="30"
+                                    HeightRequest="50"
+                                    WidthRequest="50">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="30"
+                                        HorizontalTextAlignment="Center"
+                                        Text="f"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="#1ca0f2"
+                                    CornerRadius="30"
+                                    HeightRequest="50"
+                                    WidthRequest="50">
+                                    <Image
+                                        Margin="10"
+                                        Aspect="AspectFit"
+                                        Source="https://www.pinclipart.com/picdir/big/138-1388876_2017-intertech-americas-corp-white-twitter-bird-transparent.png" />
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
