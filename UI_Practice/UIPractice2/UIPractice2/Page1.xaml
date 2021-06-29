@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="UIPractice2.Page1"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <NavigationPage.TitleView>
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="Setup"
+            TextColor="White" />
+    </NavigationPage.TitleView>
+    <Grid>
+        <BoxView
+            x:Name="Gradient"
+            AnchorX="1"
+            AnchorY="0"
+            Scale="4">
+            <BoxView.Background>
+                <LinearGradientBrush>
+                    <GradientStop Offset="0.5" Color="Green" />
+                    <GradientStop Offset="0.7" Color="Red" />
+                    <GradientStop Offset="1.0" Color="Blue" />
+
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+            <Frame
+                BackgroundColor="Transparent"
+                BorderColor="White"
+                HorizontalOptions="Center"
+                WidthRequest="250">
+                <Label
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"
+                    Text="Let's set it up!"
+                    TextColor="White" />
+            </Frame>
+            <Frame
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="250">
+                <Label
+                    FontSize="25"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="What will this device be used as?"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </Frame>
+        </StackLayout>
+        <StackLayout
+            Margin="15,15,15,40"
+            Orientation="Horizontal"
+            VerticalOptions="EndAndExpand">
+            <Button
+                Margin="0,25,0,15"
+                Padding="0,0,0,0"
+                BackgroundColor="#720017"
+                BorderColor="Black"
+                BorderWidth="2"
+                CornerRadius="30"
+                FontAttributes="Bold"
+                Text="A Controller"
+                TextColor="White"
+                WidthRequest="200" />
+            <Button
+                Margin="-50,25,0,15"
+                Padding="0,0,0,0"
+                BackgroundColor="#00743F"
+                BorderColor="Black"
+                BorderWidth="2"
+                CornerRadius="30"
+                FontAttributes="Bold"
+                Text="An Agent"
+                TextColor="White"
+                WidthRequest="200" />
+
+        </StackLayout>
+
+
+    </Grid>
+    <!--<ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label
+                FontSize="26"
+                HorizontalOptions="CenterAndExpand"
+                Text="Let's set it up!"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" />
+            <Label
+                FontSize="20"
+                HorizontalOptions="CenterAndExpand"
+                Text="What will this device be used as?"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" />
+            <StackLayout
+                Margin="5,5,5,40"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Button
+                    Margin="0,25,0,15"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Red"
+                    CornerRadius="30"
+                    Text="A Controller"
+                    TextColor="White"
+                    WidthRequest="200" />
+
+                <Button
+                    Margin="-50,25,0,15"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Green"
+                    CornerRadius="30"
+                    Text="An Agent"
+                    TextColor="White"
+                    WidthRequest="200" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

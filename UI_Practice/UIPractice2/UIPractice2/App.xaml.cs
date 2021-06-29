@@ -10,7 +10,9 @@ namespace UIPractice2
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            //MainPage = new loginCodeBehind();
+            MainPage = new NavigationPage( new Page1());
         }
 
         protected override void OnStart()
