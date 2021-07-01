@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PhoneWord.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PhoneWord"
+    Title="PhoneWord">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS">0,40,0,0</On>
+            <On Platform="Android">5,5,5,5</On>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label FontSize="Large" Text="Enter a Phoneword:" />
+            <Entry x:Name="phoneNumberText" Placeholder="1-855-XAMARIN" />
+            <!--  Examples of wiring up a Clicked event  -->
+            <Button
+                x:Name="translateButton"
+                BackgroundColor="{x:Static local:SharedResources.ButtonBkColor}"
+                Clicked="OnTranslate"
+                Text="Translate"
+                TextColor="{x:Static local:SharedResources.ButtonTextColor}" />
+            <Button
+                x:Name="callButton"
+                BackgroundColor="{x:Static local:SharedResources.ButtonBkColor}"
+                Clicked="OnCall"
+                IsEnabled="false"
+                Text="Call"
+                TextColor="{x:Static local:SharedResources.ButtonTextColor}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

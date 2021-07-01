@@ -5,13 +5,13 @@ using Xamarin.Essentials;
 
 namespace PhoneWord
 {
-    class MainPage:ContentPage
+    class OldMainPage:ContentPage
     {
         string translatednumber;
         Label _enterLabel;
         Entry _phoneNumberText;
         Button _translateButton,_callButton;
-        public MainPage()
+        public OldMainPage()
         {
             this.Padding = 20;//Try this if it works
             //Padding = new Thickness(20,20,20,20);

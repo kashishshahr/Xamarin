@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UIPractice2
+namespace TipCalc
 {
     public partial class App : Application
     {
@@ -10,9 +10,7 @@ namespace UIPractice2
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
-            MainPage = new loginCodeBehind();
-            //MainPage = new NavigationPage( new Page1());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

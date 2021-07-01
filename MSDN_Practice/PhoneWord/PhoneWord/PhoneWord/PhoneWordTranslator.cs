@@ -46,6 +46,11 @@ namespace Core
             }
             return null;
         }
+
+        internal static string ToNumber(object p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
