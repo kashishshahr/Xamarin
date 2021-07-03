@@ -19,7 +19,9 @@ namespace Tasks
 
         private async void ControllerInvoked(object sender, EventArgs e)
         {
-            await DisplayAlert("SwipeView", "Controller Setup", "Ok");
+           await DisplayAlert("SwipeView", "Controller Setup", "Ok");
+            await Navigation.PushAsync(new ControllerPage()); 
+
         }
         private async void AgentInvoked(object sender, EventArgs e)
         {
