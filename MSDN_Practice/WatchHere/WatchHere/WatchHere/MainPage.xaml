@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WatchHere.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:WatchHere"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#141616"
+    mc:Ignorable="d">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                HorizontalOptions="CenterAndExpand"
+                TextColor="White">
+                Date n Time
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <Style x:Key="textStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="50" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout
+            Margin="20,80,20,20"
+            HorizontalOptions="CenterAndExpand"
+            Orientation="Vertical"
+            Spacing="15">
+            <StackLayout Margin="5,5,5,5">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="IndianNameLabel" FontSize="Large" />
+                    <Image
+                        x:Name="india"
+                        HeightRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{local:ImageResource WatchHere.images.indian.jpg}"
+                        WidthRequest="50">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                CommandParameter="x"
+                                NumberOfTapsRequired="2"
+                                Tapped="ImageTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <Label x:Name="IndianTimeLabel" FontSize="Large" />
+            </StackLayout>
+            <BoxView
+                HeightRequest="3"
+                WidthRequest="10"
+                Color="red" />
+
+
+            <StackLayout Margin="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="TorrontoNameLabel" FontSize="Large" />
+                    <Image
+                        HeightRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{local:ImageResource WatchHere.images.canada.png}"
+                        WidthRequest="50" />
+                </StackLayout>
+                <Label x:Name="TorrontoTimeLabel" FontSize="Large" />
+
+            </StackLayout>
+            <BoxView
+                HeightRequest="3"
+                WidthRequest="10"
+                Color="red" />
+
+            <StackLayout Margin="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="FrankfurtNameLabel" FontSize="Large" />
+                    <Image
+                        HeightRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{local:ImageResource WatchHere.images.germany.png}"
+                        WidthRequest="50" />
+                </StackLayout>
+                <Label x:Name="FrankfurtTimeLabel" FontSize="Large" />
+            </StackLayout>
+            <BoxView
+                HeightRequest="3"
+                WidthRequest="10"
+                Color="red" />
+            <StackLayout Margin="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="LondonNameLabel" FontSize="Large" />
+                    <Image
+                        HeightRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{local:ImageResource WatchHere.images.london.jpg}"
+                        WidthRequest="50" />
+                </StackLayout>
+                <Label x:Name="LondonTimeLabel" FontSize="Large" />
+
+            </StackLayout>
+            <BoxView
+                HeightRequest="3"
+                WidthRequest="10"
+                Color="red" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
