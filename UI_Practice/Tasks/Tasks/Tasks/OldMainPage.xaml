@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tasks.OldMainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <NavigationPage.TitleView>
+        <Label
+            FontAttributes="Bold"
+            FontSize="26"
+            Text="Setup"
+            TextColor="White" />
+    </NavigationPage.TitleView>
+    <StackLayout BackgroundColor="White">
+        <Label
+            Margin="15"
+            FontSize="25"
+            HorizontalTextAlignment="Center"
+            Text="Let's set it up!"
+            TextColor="Black"
+            VerticalTextAlignment="Center" />
+        <Frame
+            Margin="5"
+            BackgroundColor="Transparent"
+            BorderColor="Black"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="300">
+            <StackLayout>
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="What will this device be used as?"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="Swipe Left : Agent"
+                    TextColor="LightGray"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="Swipe Right : Controller"
+                    TextColor="LightGray"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </Frame>
+
+        <Image HeightRequest="150" Source="https://cdn4.iconfinder.com/data/icons/seo-development-line/64/SETUP_CAMPAIGN-512.png" />
+        <SwipeView
+            Margin="15,5,15,55"
+            Threshold="200"
+            VerticalOptions="EndAndExpand">
+            <SwipeView.RightItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem
+                        BackgroundColor="Black"
+                        Invoked="AgentInvoked"
+                        Text="An Agent" />
+                </SwipeItems>
+            </SwipeView.RightItems>
+            <SwipeView.LeftItems>
+                <SwipeItems Mode="Execute">
+                    <SwipeItem
+                        BackgroundColor="Black"
+                        Invoked="ControllerInvoked"
+                        Text="A Controller" />
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid HeightRequest="80" WidthRequest="300">
+                <Frame
+                    BackgroundColor="LightGray"
+                    BorderColor="Black"
+                    CornerRadius="30">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Text="Swipe Here!"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center" />
+                </Frame>
+            </Grid>
+        </SwipeView>
+    </StackLayout>
+
+</ContentPage>

@@ -2,7 +2,10 @@
 <ContentPage
     x:Class="Tasks.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Tasks"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#f5f0e1">
     <NavigationPage.TitleView>
         <Label
             FontAttributes="Bold"
@@ -10,79 +13,87 @@
             Text="Setup"
             TextColor="White" />
     </NavigationPage.TitleView>
-    <StackLayout BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
         <Label
             Margin="15"
-            FontSize="25"
-            HorizontalTextAlignment="Center"
-            Text="Let's set it up!"
-            TextColor="Black"
-            VerticalTextAlignment="Center" />
-        <Frame
-            Margin="5"
-            BackgroundColor="Transparent"
-            BorderColor="Black"
+            FontAttributes="Bold"
+            FontSize="20"
             HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand"
-            WidthRequest="300">
-            <StackLayout>
-                <Label
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="What will this device be used as?"
-                    TextColor="Black"
-                    VerticalTextAlignment="Center" />
-                <Label
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="Swipe Left : Agent"
-                    TextColor="LightGray"
-                    VerticalTextAlignment="Center" />
-                <Label
-                    FontSize="20"
-                    HorizontalTextAlignment="Center"
-                    Text="Swipe Right : Controller"
-                    TextColor="LightGray"
-                    VerticalTextAlignment="Center" />
-            </StackLayout>
-        </Frame>
+            Text="What will this device be used as?"
+            TextColor="#1e3d59" />
+        <CarouselView
+            CurrentItemChanged="CarouselView_CurrentItemChanged"
+            HeightRequest="350"
+            ItemsSource="{Binding Roles}"
+            Loop="False"
+            PeekAreaInsets="80">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame
+                            Margin="10"
+                            Padding="0"
+                            BackgroundColor="White"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HeightRequest="300"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200">
+                            <Grid>
+                                <StackLayout BackgroundColor="Black">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="350"
+                                        Opacity="0.7"
+                                        Source="{Binding imgSource}"
+                                        VerticalOptions="FillAndExpand" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label
+                                        Margin="15"
+                                        FontAttributes="None"
+                                        FontSize="30"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding Name}"
+                                        TextColor="White"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                        </Label.GestureRecognizers>
 
-        <Image HeightRequest="150" Source="https://cdn4.iconfinder.com/data/icons/seo-development-line/64/SETUP_CAMPAIGN-512.png" />
-        <SwipeView
-            Margin="15,5,15,55"
-            Threshold="200"
-            VerticalOptions="EndAndExpand">
-            <SwipeView.RightItems>
-                <SwipeItems Mode="Execute">
-                    <SwipeItem
-                        BackgroundColor="Black"
-                        Invoked="AgentInvoked"
-                        Text="An Agent" />
-                </SwipeItems>
-            </SwipeView.RightItems>
-            <SwipeView.LeftItems>
-                <SwipeItems Mode="Execute">
-                    <SwipeItem
-                        BackgroundColor="Black"
-                        Invoked="ControllerInvoked"
-                        Text="A Controller" />
-                </SwipeItems>
-            </SwipeView.LeftItems>
-            <Grid HeightRequest="80" WidthRequest="300">
-                <Frame
-                    BackgroundColor="LightGray"
-                    BorderColor="Black"
-                    CornerRadius="30">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        HorizontalTextAlignment="Center"
-                        Text="Swipe Here!"
-                        TextColor="Black"
-                        VerticalTextAlignment="Center" />
-                </Frame>
-            </Grid>
-        </SwipeView>
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <Button
+            Margin="25,25,25,55"
+            Padding="30"
+            xct:TouchEffect.AnimationDuration="250"
+            xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
+            xct:TouchEffect.PressedBackgroundColor="Blue"
+            xct:TouchEffect.PressedOpacity="0.6"
+            xct:TouchEffect.PressedScale="0.75"
+            BackgroundColor="Transparent"
+            BorderColor="#1e3d59"
+            BorderWidth="2"
+            Clicked="OnSetUp"
+            CornerRadius="10"
+            FontSize="16"
+            HorizontalOptions="CenterAndExpand"
+            Text="Let's set it up"
+            TextColor="#1e3d59"
+            VerticalOptions="CenterAndExpand" />
+
+
     </StackLayout>
 
 </ContentPage>

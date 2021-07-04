@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <StackLayout Margin="15">
             <Label Margin="10" FontSize="25">Lets set it up!</Label>
-            <Label Margin="10,20,20,20" FontSize="20">Fill up following details to create a new controller</Label>
+            <Label Margin="10" FontSize="20">Fill up following details to create a new controller</Label>
             <Entry Margin="10,20,20,20" Placeholder="Give it a name" />
             <Entry
                 Margin="10,20,20,20"

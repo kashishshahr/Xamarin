@@ -1,31 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Tasks
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+            //resourceImage.Source = ImageSource.FromResource("Tasks.images.controller.jpg");
+            
+            //resourceImage1.Source = ImageSource.FromResource("Tasks.images.controller.jpg");
         }
 
-        
+       
 
-        private async void ControllerInvoked(object sender, EventArgs e)
+        string Role = "";
+        private void CarouselView_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
         {
-           await DisplayAlert("SwipeView", "Controller Setup", "Ok");
-            await Navigation.PushAsync(new ControllerPage()); 
+            DeviceRoles Prevrole = e.PreviousItem as DeviceRoles;
+            DeviceRoles Currentrole = e.CurrentItem as DeviceRoles;
+            //await DisplayAlert("Device will be used as", Currentrole.Name, "ok");
+            Role = Currentrole.Name;
 
         }
-        private async void AgentInvoked(object sender, EventArgs e)
+
+        private async void OnSetUp(object sender, EventArgs e)
         {
-            await DisplayAlert("SwipeView", "Agent Setup", "Ok");
+            if(Role=="Controller")
+                await Navigation.PushAsync(new ControllerPage());
+            else if (Role == "Agent")
+                await Navigation.PushAsync(new AgentPage());
+        }   
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            if (Role == "Controller")
+                await DisplayAlert("Controller Device", "Shows location of agent's device", "OK");
+            else if (Role == "Agent")
+                await DisplayAlert("Agent Device", "Send's location to controller's device", "OK");
         }
     }
 }
