@@ -101,10 +101,71 @@ namespace WatchHere
                 return true;
             });
         }
+        private void InvisibleClick(object sender, EventArgs e)
+        {
+            var classId=(sender as Label).ClassId;
+            Console.WriteLine(classId);
+            if(classId== "IndianInvisibleClass")
+            {
+                IndiaCard.IsVisible = false;
+                IndianInVisible.IsVisible =false;
+                IndianVisible.IsVisible =true;
+                
+            } else if (classId == "CanadaClass")
+            {
+                CanadaCard.IsVisible = false;
+                CanadaInVisible.IsVisible = false;
+                CanadaVisible.IsVisible = true;
+            } else if (classId == "GermanyClass")
+            {
 
+                GermanyCard.IsVisible = false;
+                GermanyInVisible.IsVisible = false;
+                GermanyVisible.IsVisible = true;
+            } else if (classId == "LondonInvisibleClass")
+            {
+
+                LondonCard.IsVisible = false;
+                LondonInVisible.IsVisible = false;
+                LondonVisible.IsVisible = true;
+            }
+        }
         private void ImageTapped(object sender, EventArgs e)
         {
             
+        }
+
+        private void VisibleClick(object sender, EventArgs e)
+        {
+            var classId = (sender as Label).ClassId;
+            Console.WriteLine(classId);
+            if (classId == "IndianVisibeClass")
+            {
+                IndiaCard.IsVisible = true;
+                IndianInVisible.IsVisible = true;
+                IndianVisible.IsVisible = false;
+
+            }
+            else if (classId == "CanadaVisibeClass")
+            {
+                CanadaCard.IsVisible = true;
+                CanadaInVisible.IsVisible = true;
+                CanadaVisible.IsVisible = false;
+            }
+            else if (classId == "GermanyVisibeClass")
+            {
+
+                GermanyCard.IsVisible = true;
+                GermanyInVisible.IsVisible = true;
+                GermanyVisible.IsVisible = false;
+            }
+            else if (classId == "LondonVisibeClass")
+            {
+
+                LondonCard.IsVisible = true;
+                LondonInVisible.IsVisible = true;
+                LondonVisible.IsVisible = false;
+            }
         }
     }
 

@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+    [assembly: ExportFont("Questa_Regular.otf",Alias="Questa")]
 namespace Tasks
 {
     public partial class App : Application

@@ -12,6 +12,9 @@
         <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="#f5f0e1" />
         </Style>
-
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Questa" />
+            
+        </Style>
     </Application.Resources>
 </Application>

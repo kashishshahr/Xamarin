@@ -12,10 +12,14 @@
 
   <ItemGroup>
     <None Remove="images\controller.jpg" />
+    <None Remove="Resources\Fonts\Questa_Regular.otf" />
+    <None Remove="Resources\images\appbg.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="images\controller.jpg" />
+    <EmbeddedResource Include="Resources\Fonts\Questa_Regular.otf" />
+    <EmbeddedResource Include="Resources\images\appbg.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="OldMainPage.xaml.cs">
-      <DependentUpon>OldMainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="OldMainPage.xaml.cs">
+      <DependentUpon>OldMainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -40,7 +44,7 @@
     <EmbeddedResource Update="ControllerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="MainPage.xaml">
+    <EmbeddedResource Update="OldMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

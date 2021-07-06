@@ -3,9 +3,8 @@
     x:Class="Tasks.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:Tasks"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    BackgroundColor="#f5f0e1">
+    BackgroundImageSource="appbg.jpg">
     <NavigationPage.TitleView>
         <Label
             FontAttributes="Bold"
@@ -13,87 +12,110 @@
             Text="Setup"
             TextColor="White" />
     </NavigationPage.TitleView>
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
-    <StackLayout>
-        <Label
-            Margin="15"
-            FontAttributes="Bold"
-            FontSize="20"
+    <StackLayout Orientation="Vertical">
+        <Frame
+            Margin="5,45,5,5"
+            BackgroundColor="#f5f0e1"
+            BorderColor="Black"
+            CornerRadius="15"
+            HasShadow="True"
             HorizontalOptions="CenterAndExpand"
-            Text="What will this device be used as?"
-            TextColor="#1e3d59" />
-        <CarouselView
-            CurrentItemChanged="CarouselView_CurrentItemChanged"
-            HeightRequest="350"
-            ItemsSource="{Binding Roles}"
-            Loop="False"
-            PeekAreaInsets="80">
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Frame
-                            Margin="10"
-                            Padding="0"
-                            BackgroundColor="White"
-                            CornerRadius="10"
-                            HasShadow="True"
-                            HeightRequest="300"
-                            HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="200">
-                            <Grid>
-                                <StackLayout BackgroundColor="Black">
-                                    <Image
-                                        Aspect="AspectFill"
-                                        HeightRequest="350"
-                                        Opacity="0.7"
-                                        Source="{Binding imgSource}"
-                                        VerticalOptions="FillAndExpand" />
-                                </StackLayout>
-                                <StackLayout>
-                                    <Label
-                                        Margin="15"
-                                        FontAttributes="None"
-                                        FontSize="30"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{Binding Name}"
-                                        TextColor="White"
-                                        VerticalOptions="EndAndExpand">
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                        </Label.GestureRecognizers>
+            WidthRequest="300">
+            <StackLayout>
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="What will this device be used as?"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </Frame>
 
-                                    </Label>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,50,0,0">
+                <StackLayout
+                    Margin="0,30,0,30"
+                    Padding="2"
+                    BackgroundColor="#f5f0e1"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Margin="10"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnButtonTapped" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                            x:Name="ControllerRadioImage"
+                            HeightRequest="40"
+                            Source="unchecked.png" />
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                x:Name="ControllerRadioLabel"
+                                FontFamily="Questa"
+                                FontSize="25"
+                                Text="Controller"
+                                TextColor="#1e3d59"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                Text="Tracks Location of agent"
+                                TextColor="#1e3d59" />
+                        </StackLayout>
                     </StackLayout>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                    <StackLayout
+                        Margin="10,10,-10,10"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnButtonTapped1" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                            x:Name="AgentRadioImage"
+                            HeightRequest="40"
+                            Source="unchecked.png" />
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                x:Name="AgentRadioLabel"
+                                FontSize="25"
+                                Text="Agent"
+                                TextColor="#1e3d59"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                Text="Send's Location to Controller"
+                                TextColor="#1e3d59" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
 
-        <Button
-            Margin="25,25,25,55"
-            Padding="30"
-            xct:TouchEffect.AnimationDuration="250"
-            xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
-            xct:TouchEffect.PressedBackgroundColor="Blue"
-            xct:TouchEffect.PressedOpacity="0.6"
-            xct:TouchEffect.PressedScale="0.75"
-            BackgroundColor="Transparent"
-            BorderColor="#1e3d59"
-            BorderWidth="2"
-            Clicked="OnSetUp"
-            CornerRadius="10"
-            FontSize="16"
-            HorizontalOptions="CenterAndExpand"
-            Text="Let's set it up"
-            TextColor="#1e3d59"
-            VerticalOptions="CenterAndExpand" />
-
-
+                <StackLayout Margin="20,100,20,20" HorizontalOptions="Center">
+                    <Button
+                        Padding="20"
+                        xct:ShadowEffect.Color="Blue"
+                        xct:ShadowEffect.OffsetX="5"
+                        xct:ShadowEffect.OffsetY="5"
+                        BackgroundColor="#f5f0e1"
+                        BorderColor="#1e3d59"
+                        BorderWidth="5"
+                        Clicked="btn_clicked"
+                        CornerRadius="7"
+                        FontSize="25"
+                        HorizontalOptions="Center"
+                        Text="Let's set it up!"
+                        TextColor="#1e3d59"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
     </StackLayout>
 
 </ContentPage>

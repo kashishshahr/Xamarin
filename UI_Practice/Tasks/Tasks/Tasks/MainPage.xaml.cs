@@ -1,51 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Tasks
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
-            //resourceImage.Source = ImageSource.FromResource("Tasks.images.controller.jpg");
-            
-            //resourceImage1.Source = ImageSource.FromResource("Tasks.images.controller.jpg");
+            ControllerRadio = false;
+            AgentRadio= false;
         }
 
-       
+        
 
-        string Role = "";
-        private void CarouselView_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
+        private async void ControllerInvoked(object sender, EventArgs e)
         {
-            DeviceRoles Prevrole = e.PreviousItem as DeviceRoles;
-            DeviceRoles Currentrole = e.CurrentItem as DeviceRoles;
-            //await DisplayAlert("Device will be used as", Currentrole.Name, "ok");
-            Role = Currentrole.Name;
+           await DisplayAlert("SwipeView", "Controller Setup", "Ok");
+            //await Navigation.PushAsync(new ControllerPage()); 
 
         }
-
-        private async void OnSetUp(object sender, EventArgs e)
+        private async void AgentInvoked(object sender, EventArgs e)
         {
-            if(Role=="Controller")
+            await DisplayAlert("SwipeView", "Agent Setup", "Ok");
+        }
+
+        bool ControllerRadio, AgentRadio;
+
+        private void OnButtonTapped1(object sender, EventArgs e)
+        {
+            AgentRadio = true;
+            AgentRadioImage.Source = "checked.png";
+            if (ControllerRadio.Equals(true))
+            {
+                ControllerRadioImage.Source = "unchecked.png";
+                ControllerRadio = false;
+            }
+        }
+        private async void btn_clicked(object sender,EventArgs e)
+        {
+            if (ControllerRadio) {
                 await Navigation.PushAsync(new ControllerPage());
-            else if (Role == "Agent")
+            }
+                
+            else if (AgentRadio) {
                 await Navigation.PushAsync(new AgentPage());
-        }   
-
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+            }
+                //Selected.Text = AgentRadioLabel.Text + " Selected";
+            else
+                await DisplayAlert("Alert", "Choose one of the options", "Ok");
+        }
+        private void OnButtonTapped(object sender, EventArgs e)
         {
-            if (Role == "Controller")
-                await DisplayAlert("Controller Device", "Shows location of agent's device", "OK");
-            else if (Role == "Agent")
-                await DisplayAlert("Agent Device", "Send's location to controller's device", "OK");
+            ControllerRadio = true;
+            ControllerRadioImage.Source = "checked.png";
+            if(AgentRadio.Equals(true))
+            {
+                AgentRadioImage.Source = "unchecked.png";
+                AgentRadio = false;
+            }
+         
         }
     }
 }

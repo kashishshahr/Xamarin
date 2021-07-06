@@ -8,7 +8,7 @@
             FontAttributes="Bold"
             FontSize="26"
             Text="Controller"
-            TextColor="White" />
+            TextColor="White" />                                                                                  
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
