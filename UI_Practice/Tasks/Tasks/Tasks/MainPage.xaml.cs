@@ -10,11 +10,18 @@ namespace Tasks
 {
     public partial class MainPage : ContentPage
     {
+        Color HightlightWhite;
+        Color newBlue;
+        Color newWhite;
         public MainPage()
         {
             InitializeComponent();
+
             ControllerRadio = false;
             AgentRadio= false;
+            HightlightWhite= (Color)Application.Current.Resources["highlightWhite"];
+            newWhite = (Color)Application.Current.Resources["newWhite"];
+            newBlue = (Color)Application.Current.Resources["newBlue"];
         }
 
         
@@ -32,12 +39,14 @@ namespace Tasks
 
         bool ControllerRadio, AgentRadio;
 
-        private void OnButtonTapped1(object sender, EventArgs e)
+        private void OnAgentRadioButtonTapped(object sender, EventArgs e)
         {
+            AgentLayout.BackgroundColor = HightlightWhite;
             AgentRadio = true;
             AgentRadioImage.Source = "checked.png";
             if (ControllerRadio.Equals(true))
             {
+                ControllerLayout.BackgroundColor = newWhite;
                 ControllerRadioImage.Source = "unchecked.png";
                 ControllerRadio = false;
             }
@@ -55,12 +64,15 @@ namespace Tasks
             else
                 await DisplayAlert("Alert", "Choose one of the options", "Ok");
         }
-        private void OnButtonTapped(object sender, EventArgs e)
+        private void OnControllerRadioButtonTapped(object sender, EventArgs e)
         {
+            
+            ControllerLayout.BackgroundColor = HightlightWhite;
             ControllerRadio = true;
             ControllerRadioImage.Source = "checked.png";
             if(AgentRadio.Equals(true))
             {
+                AgentLayout.BackgroundColor = newWhite;
                 AgentRadioImage.Source = "unchecked.png";
                 AgentRadio = false;
             }

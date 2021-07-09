@@ -8,28 +8,180 @@
             FontAttributes="Bold"
             FontSize="26"
             Text="Controller"
-            TextColor="White" />                                                                                  
+            TextColor="White" />
     </NavigationPage.TitleView>
 
-    <ContentPage.Content>
-        <StackLayout Margin="15">
-            <Label Margin="10" FontSize="25">Lets set it up!</Label>
-            <Label Margin="10" FontSize="20">Fill up following details to create a new controller</Label>
-            <Entry Margin="10,20,20,20" Placeholder="Give it a name" />
-            <Entry
-                Margin="10,20,20,20"
-                IsPassword="True"
-                Placeholder="password" />
-            <Entry
-                Margin="10,20,20,20"
-                IsPassword="True"
-                Placeholder="confirm password" />
-            <Entry
-                Margin="10,20,20,20"
-                IsPassword="True"
-                Placeholder="your email" />
-            <Button Text="Register" />
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="Gray" />
+            <Setter Property="ReturnType" Value="Next" />
+            <Setter Property="CharacterSpacing" Value="1" />
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
 
-        </StackLayout>
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#EE12121B" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Frame Padding="0" BackgroundColor="#12121A">
+                <Image
+                    Aspect="AspectFit"
+                    Opacity="0.6"
+                    ScaleY="1.5"
+                    Source="appbg.jpg"
+                    TranslationY="100" />
+
+            </Frame>
+            <StackLayout>
+                <ProgressBar
+                    x:Name="RegisterProgressBar"
+                    Margin="0,-5,0,0"
+                    IsVisible="false"
+                    Progress="0" />
+                <StackLayout Margin="5,5,5,20">
+                    <Label
+                        Margin="10"
+                        FontFamily="RegularFont"
+                        FontSize="25">
+                        Lets set it up!
+                    </Label>
+                    <Label
+                        Margin="10"
+                        FontFamily="RegularFont"
+                        FontSize="20">
+                        Fill up following details to create a new controller
+                    </Label>
+                    <StackLayout Margin="0,25,0,0">
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            BorderColor="DarkGray"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Margin="7"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="50"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="35">
+                                    <Image Aspect="AspectFit" Source="devices.png" />
+
+                                </Frame>
+
+                                <Entry
+                                    Margin="0,0,15,0"
+                                    FontAttributes="None"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Device's Name" />
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,25,0,0">
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            BorderColor="DarkGray"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Margin="7"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="50"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="35">
+                                    <Image Source="mail.png" />
+
+                                </Frame>
+                                <Entry
+                                    Margin="0,0,15,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Email"
+                                    Placeholder="Email Address" />
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,25,0,0">
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            BorderColor="DarkGray"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Margin="7"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="50"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="35">
+                                    <Image Source="password.png" />
+                                </Frame>
+                                <Entry
+                                    Margin="0,0,15,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsPassword="True"
+                                    Placeholder="Password" />
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,25,0,0">
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            BorderColor="DarkGray"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Margin="7"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="50"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="35">
+                                    <Image Source="password.png" />
+                                </Frame>
+                                <Entry
+                                    Margin="0,0,15,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsPassword="True"
+                                    Placeholder="Confirm Password" />
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <Button
+                        Margin="0,25,0,0"
+                        Padding="30,0,30,0"
+                        BackgroundColor="#1c60e7"
+                        Clicked="OnRegisterClicked"
+                        CornerRadius="30"
+                        FontAttributes="Bold"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Register"
+                        TextColor="Black" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -4,17 +4,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
-
+        <Color x:Key="newBlue">#1e3d59</Color>
+        <Color x:Key="newBlack">#12121A</Color>
+        <Color x:Key="newWhite">#f5f0e1</Color>
+        <Color x:Key="highlightWhite">#ECE3C7</Color>
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="#1e3d59" />
-            <Setter Property="BarTextColor" Value="White" />
-        </Style>
-        <Style TargetType="ContentPage">
-            <Setter Property="BackgroundColor" Value="#f5f0e1" />
+            <Setter Property="BarBackgroundColor" Value="{StaticResource newBlue}" />
+            <Setter Property="BarTextColor" Value="{StaticResource newWhite}" />
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Questa" />
-            
+            <Setter Property="FontFamily" Value="SemiBoldFont" />
+            <Setter Property="TextColor" Value="{StaticResource newBlue}" />
         </Style>
     </Application.Resources>
 </Application>
