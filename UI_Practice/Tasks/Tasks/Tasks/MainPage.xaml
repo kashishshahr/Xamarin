@@ -4,84 +4,78 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:local="using:Tasks"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="Black"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
         <Label
             FontAttributes="Bold"
-            FontSize="26"
+            FontSize="22"
             Text="Setup"
             TextColor="White" />
     </NavigationPage.TitleView>
 
-    <Grid>
-        <Frame Padding="0" BackgroundColor="#12121A">
-            <Image
-                Aspect="AspectFit"
-                ScaleY="1.5"
-                Source="appbg.jpg"
-                TranslationY="100" />
-        </Frame>
-
+    <Grid Margin="0">
         <StackLayout Orientation="Vertical">
             <Frame
-                Margin="15,45,15,2"
-                BackgroundColor="{StaticResource newWhite}"
+                Margin="0"
+                Padding="0"
+                HeightRequest="350">
+                <ff:CachedImage
+                    x:Name="Gif"
+                    Aspect="Fill"
+                    Source="map_compas.gif" />
+            </Frame>
+            <Frame
+                Margin="0,-30,0,0"
+                BackgroundColor="WhiteSmoke"
                 BorderColor="Black"
-                CornerRadius="35"
-                HasShadow="True"
-                HorizontalOptions="CenterAndExpand">
+                HasShadow="True">
                 <StackLayout>
                     <Label
                         FontFamily="SemiBoldFont"
-                        FontSize="25"
+                        FontSize="20"
                         HorizontalTextAlignment="Center"
-                        Opacity="1"
                         Text="What will this device be used as?"
-                        TextColor="{StaticResource newBlue}"
+                        TextColor="Black"
                         VerticalTextAlignment="Center" />
+
                 </StackLayout>
             </Frame>
-
-            <StackLayout
-                Margin="0,60,0,0"
-                BackgroundColor="{StaticResource newWhite}"
-                Orientation="Horizontal"
-                VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                 <StackLayout
                     x:Name="ControllerLayout"
-                    Padding="5,10,2,10"
+                    Padding="5,10,5,10"
                     Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerRadioButtonTapped" />
                     </StackLayout.GestureRecognizers>
                     <StackLayout Orientation="Vertical">
                         <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                            <Image
-                                x:Name="ControllerRadioImage"
-                                HeightRequest="40"
-                                Source="unchecked.png" />
+                            <Image x:Name="ControllerRadioImage" HeightRequest="40" />
 
                             <Label
                                 x:Name="ControllerRadioLabel"
                                 FontFamily="BoldFont"
-                                FontSize="20"
+                                FontSize="16"
                                 HorizontalTextAlignment="Center"
                                 Text="Controller"
-                                TextColor="#1e3d59"
+                                TextColor="Black"
                                 VerticalOptions="CenterAndExpand" />
                         </StackLayout>
                         <Label
                             x:Name="ControllerInfoLabel"
                             FontAttributes="Bold"
                             FontFamily="ItalicFont"
-                            FontSize="15"
+                            FontSize="14"
                             HorizontalTextAlignment="Center"
                             Text="Tracks Location of agent's device"
-                            TextColor="#1e3d59" />
+                            TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout
@@ -94,182 +88,59 @@
 
                     <StackLayout Orientation="Vertical">
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                            <Image
-                                x:Name="AgentRadioImage"
-                                HeightRequest="40"
-                                Source="unchecked.png" />
+                            <Image x:Name="AgentRadioImage" HeightRequest="40" />
                             <Label
                                 x:Name="AgentRadioLabel"
                                 FontFamily="BoldFont"
-                                FontSize="20"
+                                FontSize="16"
                                 Text="Agent"
-                                TextColor="#1e3d59"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </StackLayout>
                         <Label
                             x:Name="AgentInfoLabel"
                             FontAttributes="Bold"
                             FontFamily="ItalicFont"
-                            FontSize="15"
+                            FontSize="14"
                             HorizontalTextAlignment="Center"
                             Text="Send's Location to Controller's device"
-                            TextColor="#1e3d59" />
+                            TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
+            <Frame
+                x:Name="setupButton"
+                Margin="0,5,0,20"
+                Padding="0"
+                BackgroundColor="WhiteSmoke"
+                CornerRadius="5"
+                HasShadow="True"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="250">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btn_clicked" />
+                </Frame.GestureRecognizers>
+                <StackLayout
+                    Margin="15,0,5,0"
+                    HeightRequest="50"
+                    Orientation="Horizontal">
+                    <Label
+                        FontFamily="BoldFont"
+                        FontSize="18"
+                        HorizontalTextAlignment="Start"
+                        Text="Let's set it up!!"
+                        TextColor="{StaticResource newBlack}"
+                        VerticalOptions="Center" />
+                    <Image
+                        Margin="0,0,10,0"
+                        HeightRequest="25"
+                        HorizontalOptions="EndAndExpand"
+                        Source="brightarrow.png"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
 
-            <StackLayout
-                Margin="0,0,0,80"
-                HorizontalOptions="Center"
-                VerticalOptions="EndAndExpand">
-                <Button
-                    Padding="20"
-                    xct:ShadowEffect.Color="Blue"
-                    xct:ShadowEffect.OffsetX="15"
-                    xct:ShadowEffect.OffsetY="5"
-                    BackgroundColor="{StaticResource newWhite}"
-                    BorderColor="{StaticResource newBlue}"
-                    BorderWidth="5"
-                    Clicked="btn_clicked"
-                    CornerRadius="7"
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    Text="Let's set it up!"
-                    TextColor="#1e3d59"
-                    VerticalOptions="EndAndExpand" />
-            </StackLayout>
-
-
+            </Frame>
         </StackLayout>
     </Grid>
 </ContentPage>
-
-
-<!--<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Tasks.MainPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:Tasks"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    mc:Ignorable="d">
-
-    <NavigationPage.TitleView>
-        <Label
-            FontAttributes="Bold"
-            FontSize="26"
-            Text="Setup"
-            TextColor="White" />
-    </NavigationPage.TitleView>
-    <Grid>
-        <Frame Padding="0">
-            <Image Aspect="AspectFill" Source="appbg.jpg" />
-
-        </Frame>
-        <StackLayout Orientation="Vertical">
-
-
-            <Frame
-                Margin="5,45,5,5"
-                BackgroundColor="#f5f0e1"
-                BorderColor="#f5f0e1"
-                CornerRadius="15"
-                HasShadow="True"
-                HorizontalOptions="CenterAndExpand"
-                WidthRequest="300">
-                <StackLayout>
-                    <Label
-                        FontSize="30"
-                        HorizontalTextAlignment="Center"
-                        Text="What will this device be used as?"
-                        VerticalTextAlignment="Center" />
-                </StackLayout>
-            </Frame>
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Margin="0,50,0,0">
-                    <StackLayout
-                        Margin="0,30,0,30"
-                        Padding="2"
-                        BackgroundColor="#f5f0e1"
-                        Orientation="Horizontal">
-                        <StackLayout
-                            Margin="10"
-                            HorizontalOptions="CenterAndExpand"
-                            Orientation="Horizontal">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnButtonTapped" />
-                            </StackLayout.GestureRecognizers>
-                            <Image
-                                x:Name="ControllerRadioImage"
-                                HeightRequest="40"
-                                Source="unchecked.png" />
-                            <StackLayout Orientation="Vertical">
-                                <Label
-                                    x:Name="ControllerRadioLabel"
-                                    FontSize="25"
-                                    Text="Controller"
-                                    TextColor="#1e3d59"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="15"
-                                    Text="Tracks Location of agent"
-                                    TextColor="#1e3d59" />
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout
-                            Margin="10,10,-10,10"
-                            HorizontalOptions="CenterAndExpand"
-                            Orientation="Horizontal">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnButtonTapped1" />
-                            </StackLayout.GestureRecognizers>
-                            <Image
-                                x:Name="AgentRadioImage"
-                                HeightRequest="40"
-                                Source="unchecked.png" />
-                            <StackLayout Orientation="Vertical">
-                                <Label
-                                    x:Name="AgentRadioLabel"
-                                    FontSize="25"
-                                    Text="Agent"
-                                    TextColor="#1e3d59"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="15"
-                                    Text="Send's Location to Controller"
-                                    TextColor="#1e3d59" />
-                            </StackLayout>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout Margin="20,100,20,20" HorizontalOptions="Center">
-                        <Button
-                            Padding="20"
-                            xct:ShadowEffect.Color="Blue"
-                            xct:ShadowEffect.OffsetX="5"
-                            xct:ShadowEffect.OffsetY="5"
-                            BackgroundColor="#f5f0e1"
-                            BorderColor="#1e3d59"
-                            BorderWidth="5"
-                            Clicked="btn_clicked"
-                            CornerRadius="7"
-                            FontSize="25"
-                            HorizontalOptions="Center"
-                            Text="Let's set it up!"
-                            TextColor="#1e3d59"
-                            VerticalOptions="EndAndExpand" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-        </StackLayout>
-    </Grid>
-</ContentPage>-->
 

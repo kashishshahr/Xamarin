@@ -16,7 +16,9 @@ namespace Tasks
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new TabViewSetup());
+            
         }
 
         protected override void OnStart()

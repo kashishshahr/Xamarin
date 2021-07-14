@@ -2,11 +2,14 @@
 <ContentPage
     x:Class="Tasks.ControllerPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
     <NavigationPage.TitleView>
         <Label
             FontAttributes="Bold"
-            FontSize="26"
+            FontSize="22"
             Text="Controller"
             TextColor="White" />
     </NavigationPage.TitleView>
@@ -21,6 +24,8 @@
             <Setter Property="CharacterSpacing" Value="1" />
             <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
             <Setter Property="TextColor" Value="{StaticResource newWhite}" />
+            <Setter Property="FontFamily" Value="RegularFont" />
+
 
         </Style>
         <Style TargetType="Frame">
@@ -29,31 +34,26 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Frame Padding="0" BackgroundColor="#12121A">
-                <Image
-                    Aspect="AspectFit"
-                    Opacity="0.6"
-                    ScaleY="1.5"
-                    Source="appbg.jpg"
-                    TranslationY="100" />
-
-            </Frame>
+            <Frame Padding="0" BackgroundColor="Black" />
             <StackLayout>
                 <ProgressBar
                     x:Name="RegisterProgressBar"
                     Margin="0,-5,0,0"
                     IsVisible="false"
                     Progress="0" />
+
+
                 <StackLayout Margin="5,5,5,20">
                     <Label
                         Margin="10"
-                        FontFamily="RegularFont"
+                        FontFamily="SemiBoldFont"
                         FontSize="25">
-                        Lets set it up!
+                        Lets set it up!!!
                     </Label>
+
                     <Label
                         Margin="10"
-                        FontFamily="RegularFont"
+                        FontFamily="SemiBoldFont"
                         FontSize="20">
                         Fill up following details to create a new controller
                     </Label>
@@ -171,9 +171,9 @@
                     </StackLayout>
 
                     <Button
-                        Margin="0,25,0,0"
-                        Padding="30,0,30,0"
-                        BackgroundColor="#1c60e7"
+                        Margin="0,50,0,0"
+                        Padding="50,0,50,0"
+                        BackgroundColor="White"
                         Clicked="OnRegisterClicked"
                         CornerRadius="30"
                         FontAttributes="Bold"
