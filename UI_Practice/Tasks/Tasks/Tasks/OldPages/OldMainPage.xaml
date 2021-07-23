@@ -13,9 +13,6 @@
             Text="Setup"
             TextColor="White" />
     </NavigationPage.TitleView>
-    <ContentPage.BindingContext>
-        <vm:MainViewModel />
-    </ContentPage.BindingContext>
     <StackLayout>
         <Label
             Margin="15"

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Tasks
+namespace Tasks.TabbedPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AgentPage : ContentPage
+    public partial class ContainerTabPage : TabbedPage
     {
-        public AgentPage()
+        public ContainerTabPage()
         {
             InitializeComponent();
         }

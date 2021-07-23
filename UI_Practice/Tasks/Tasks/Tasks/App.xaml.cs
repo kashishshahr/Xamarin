@@ -1,4 +1,5 @@
 ﻿using System;
+using Tasks.TabbedPages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,6 +19,7 @@ namespace Tasks
 
             //MainPage = new NavigationPage(new MainPage());
             MainPage = new NavigationPage(new TabViewSetup());
+            //MainPage = new NavigationPage(new AgentTabPage());
             
         }
 

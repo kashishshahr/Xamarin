@@ -4,12 +4,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:vm="clr-namespace:Tasks.ViewModel"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    Title="Setup"
-    BackgroundColor="#181818">
+    BackgroundColor="{StaticResource primaryBackGroundColor}">
+
+    <NavigationPage.TitleView>
+        <Label
+            HorizontalTextAlignment="Start"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="Setup" />
+    </NavigationPage.TitleView>
+    <ContentPage.BindingContext>
+        <vm:AgentViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
         </Style>
         <Style TargetType="Entry">
             <Setter Property="PlaceholderColor" Value="Gray" />
@@ -18,363 +29,513 @@
             <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
             <Setter Property="TextColor" Value="{StaticResource newWhite}" />
             <Setter Property="FontFamily" Value="RegularFont" />
-
-
+            <Setter Property="FontSize" Value="16" />
         </Style>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="#EE12121B" />
+            <Setter Property="BackgroundColor" Value="{StaticResource primaryEntryBackgroundColor}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+
+
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="Opacity" Value="0.5" />
+                                <Setter Property="TextColor" Value="Black" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
     </ContentPage.Resources>
-    <StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="350" />
+
+        </Grid.RowDefinitions>
         <ProgressBar
             x:Name="RegisterProgressBar"
-            Margin="0,-5,0,0"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0,0,0,0"
             IsVisible="false"
-            Progress="0" />
+            Progress="0"
+            ProgressColor="AliceBlue"
+            VerticalOptions="Start" />
+        <StackLayout
+            x:Name="SlideViewStack"
+            Grid.Row="0"
+            Margin="0,0,0,0"
+            Spacing="10">
 
-
-        <Label
-            Margin="0,10,0,0"
-            FontSize="20"
-            HorizontalOptions="Center"
-            Text="What will this device be used as?"
-            TextColor="White" />
-        <Frame
-            Margin="0,10,0,0"
-            Padding="0"
-            BackgroundColor="Black"
-            CornerRadius="25"
-            HeightRequest="50"
-            HorizontalOptions="Center"
-            WidthRequest="250">
-            <Grid BackgroundColor="Black">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Frame
-                    x:Name="ControllerFrame"
-                    Padding="0,0,0,0"
-                    BackgroundColor="#282828">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerTapped" />
-                    </Frame.GestureRecognizers>
-                    <Label
-                        FontFamily="BoldFont"
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Controller"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </Frame>
-                <Frame
-                    x:Name="AgentFrame"
-                    Grid.Column="1"
-                    Padding="0"
-                    BackgroundColor="Transparent">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAgentTapped" />
-                    </Frame.GestureRecognizers>
-                    <Label
-                        FontFamily="BoldFont"
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Agent"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </Frame>
-
-            </Grid>
-
-        </Frame>
-
-        <Grid
-            x:Name="ControllerVisible"
-            Margin="5,0,5,5"
-            xct:ShadowEffect.Color="Black"
-            xct:ShadowEffect.OffsetY="100"
-            xct:ShadowEffect.Opacity="1"
-            IsVisible="True">
-            <Frame Padding="0" BackgroundColor="#141414" />
-
-            <StackLayout>
-                <StackLayout Margin="5,0,5,0">
-
-                    <Label
-                        Margin="10,10,10,10"
-                        FontFamily="SemiBoldFont"
-                        FontSize="20">
-                        Fill up following details to create a new controller
-                    </Label>
-                    <StackLayout Margin="0,25,0,0">
+            <Label
+                Margin="0,5,0,0"
+                HorizontalOptions="Center"
+                Style="{StaticResource TitleLabelStyle}"
+                Text="What will this device be used as?" />
+            <Frame
+                Margin="0"
+                Padding="0"
+                BackgroundColor="Black"
+                CornerRadius="40"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="250">
+                <Grid x:Name="RoleGrid" ColumnDefinitions="*,*">
+                    <Frame
+                        x:Name="RoleSelection"
+                        Grid.Column="0"
+                        Padding="30"
+                        BackgroundColor="#282828"
+                        CornerRadius="25" />
+                    <StackLayout
+                        x:Name="AgentStack"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand">
                         <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Aspect="AspectFit" Source="devices.png" />
-
-                                </Frame>
-
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    FontAttributes="None"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Device's Name" />
-                            </StackLayout>
-
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAgentTapped" />
+                            </Frame.GestureRecognizers>
+                            <Label
+                                x:Name="AgentText"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource HighlightLabelStyle}"
+                                Text="Agent"
+                                VerticalOptions="Center" />
                         </Frame>
                     </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
+                    <StackLayout
+                        x:Name="ControllerStack"
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand">
                         <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="mail.png" />
-
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Keyboard="Email"
-                                    Placeholder="Email Address" />
-                            </StackLayout>
-
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnControllerTapped" />
+                            </Frame.GestureRecognizers>
+                            <Label
+                                x:Name="ControllerText"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource HighlightLabelStyle}"
+                                Text="Controller"
+                                VerticalOptions="Center" />
                         </Frame>
                     </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Confirm Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-
-                    <Button
-                        Margin="0,20,0,25"
-                        Padding="50,0,50,0"
-                        BackgroundColor="White"
-                        Clicked="OnRegisterClicked"
-                        CornerRadius="30"
-                        FontAttributes="Bold"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Register"
-                        TextColor="Black" />
-                </StackLayout>
-            </StackLayout>
-        </Grid>
-
+                </Grid>
+            </Frame>
+        </StackLayout>
         <Grid
             x:Name="AgentVisible"
-            Margin="5,0,5,5"
+            Grid.Row="1"
+            Margin="5,15,5,0"
             xct:ShadowEffect.Color="Black"
-            xct:ShadowEffect.OffsetY="100"
-            xct:ShadowEffect.Opacity="1"
-            IsVisible="True">
-            <Frame Padding="0" BackgroundColor="#141414" />
+            VerticalOptions="Start">
+            <Frame
+                Padding="0"
+                BackgroundColor="#282828"
+                CornerRadius="10"
+                VerticalOptions="Start">
+                <Grid>
+                    <StackLayout x:Name="AgentCredentialStack" Spacing="0">
 
-            <StackLayout>
-                <StackLayout Margin="5,0,5,0">
+                        <Label
+                            Margin="10,10,10,10"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource TitleLabelStyle}">
+                            Who is controller of this device?
+                        </Label>
 
+                        <StackLayout
+                            Margin="10,10,10,0"
+                            Orientation="Vertical"
+                            Spacing="25"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout x:Name="AgentNameEntryStack">
+                                <Frame
+                                    Padding="0"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="50"
+                                    HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame
+                                            Margin="7"
+                                            Padding="5"
+                                            BackgroundColor="AliceBlue"
+                                            CornerRadius="50"
+                                            HeightRequest="35"
+                                            HorizontalOptions="Start"
+                                            WidthRequest="35">
+                                            <Image Aspect="AspectFit" Source="name.png" />
+
+                                        </Frame>
+                                        <Entry
+                                            x:Name="ControllerDeviceNameEntry"
+                                            Margin="0,0,15,0"
+                                            FontAttributes="None"
+                                            HorizontalOptions="FillAndExpand"
+                                            Placeholder="Controller's Name"
+                                            TextChanged="AgentNameTextChanged" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout x:Name="agentPasswordStack">
+                                <Frame
+                                    Margin="0"
+                                    Padding="2"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="50"
+                                    HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame
+                                            Margin="7"
+                                            Padding="5"
+                                            BackgroundColor="AliceBlue"
+                                            CornerRadius="50"
+                                            HeightRequest="35"
+                                            HorizontalOptions="Start"
+                                            WidthRequest="35">
+                                            <Image Source="password.png" />
+                                        </Frame>
+                                        <Entry
+                                            x:Name="agentPasswordEntry"
+                                            Margin="0,0,0,0"
+                                            ClearButtonVisibility="Never"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsPassword="True"
+                                            Placeholder="Controller's Password"
+                                            TextChanged="AgentPasswordTextChanged" />
+                                        <Image
+                                            x:Name="agentPasswordEyeImage"
+                                            Margin="0,0,10,0"
+                                            HeightRequest="30"
+                                            HorizontalOptions="End"
+                                            Source="eye.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAgentEyeIconTap" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontFamily="RegularFont"
+                                    FontSize="16"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="Agent:" />
+                                <StackLayout x:Name="agentOfDeviceStack" HorizontalOptions="CenterAndExpand">
+                                    <Frame
+                                        Margin="0"
+                                        Padding="2"
+                                        BorderColor="DarkGray"
+                                        CornerRadius="50"
+                                        HorizontalOptions="FillAndExpand">
+                                        <StackLayout Padding="20,0,10,0" Orientation="Horizontal">
+
+                                            <Entry
+                                                x:Name="agentOfDeviceEntry"
+                                                Margin="0,0,0,0"
+                                                ClearButtonVisibility="Never"
+                                                HorizontalOptions="FillAndExpand"
+                                                IsEnabled="False"
+                                                Placeholder="Agent's Name"
+                                                Text="Agent Name" />
+                                            <ImageButton
+                                                x:Name="agentOfDeviceImage"
+                                                Margin="0,0,10,0"
+                                                BackgroundColor="Transparent"
+                                                Clicked="OnAgentGoClickedAsync"
+                                                HeightRequest="30"
+                                                HorizontalOptions="End"
+                                                Source="uparrow.png" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame BackgroundColor="Transparent">
+                            <Button
+                                Padding="50,0"
+                                Clicked="OnLetsGoClickAsync"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource Button}"
+                                Text="Let's go" />
+                        </Frame>
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
+        </Grid>
+        <Frame
+            x:Name="AgentListPop"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Margin="5,0,5,-10"
+            Padding="0,0,0,10"
+            BackgroundColor="#141414"
+            BorderColor="White"
+            CornerRadius="10"
+            IsVisible="False"
+            VerticalOptions="EndAndExpand">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                HeightRequest="500"
+                VerticalOptions="EndAndExpand">
+                <ImageButton
+                    Margin="10,10,10,0"
+                    BackgroundColor="Transparent"
+                    Clicked="OnAgentGoBackClickedAsync"
+                    HeightRequest="30"
+                    HorizontalOptions="EndAndExpand"
+                    Source="downarrow.png" />
+                <StackLayout Margin="20,0,0,0">
                     <Label
-                        Margin="10,10,10,10"
+                        Margin="20,0,0,0"
+                        Padding="1"
+                        CharacterSpacing="1"
                         FontFamily="SemiBoldFont"
-                        FontSize="20">
-                        Fill up following details to create a new agent
-                    </Label>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Aspect="AspectFit" Source="devices.png" />
+                        HorizontalOptions="Start"
+                        Text="AGENTS" />
+                    <CollectionView
+                        Margin="0,15,0,0"
+                        ItemsSource="{Binding Agents}"
+                        SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
 
-                                </Frame>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Frame
+                                        Margin="0,5,0,0"
+                                        Padding="0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="40">
+                                        <Image
+                                            Grid.Column="0"
+                                            Margin="0"
+                                            Source="{Binding AgentImageUrl}" />
+                                    </Frame>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            x:Name="Title"
+                                            FontFamily="RegularFont"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding AgentName}"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <ImageButton
+                                            Margin="0,0,20,0"
+                                            BackgroundColor="Transparent"
+                                            Clicked="OnAgentSelectedAsync"
+                                            HeightRequest="30"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="plus.png" />
+                                    </StackLayout>
 
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    FontAttributes="None"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Device's Name" />
-                            </StackLayout>
 
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="mail.png" />
+                                </Grid>
 
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Keyboard="Email"
-                                    Placeholder="Email Address" />
-                            </StackLayout>
 
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Confirm Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-
-                    <Button
-                        Margin="0,20,0,25"
-                        Padding="50,0,50,0"
-                        BackgroundColor="White"
-                        Clicked="OnRegisterClicked"
-                        CornerRadius="30"
-                        FontAttributes="Bold"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Register"
-                        TextColor="Black" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </StackLayout>
+        </Frame>
+        <Grid
+            x:Name="ControllerVisible"
+            Grid.Row="1"
+            Margin="10"
+            VerticalOptions="Start">
+            <Frame
+                Padding="0"
+                xct:ShadowEffect.Color="Black"
+                BackgroundColor="#282828"
+                CornerRadius="10" />
+            <StackLayout Padding="10,0,10,0">
+                <Label
+                    Margin="10,10,10,10"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource TitleLabelStyle}">
+                    Fill up following details to create a new controller
+                </Label>
+                <StackLayout Margin="0,15,0,0">
+                    <Frame
+                        Margin="0"
+                        Padding="2"
+                        BorderColor="DarkGray"
+                        CornerRadius="50"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="7"
+                                Padding="5"
+                                BackgroundColor="AliceBlue"
+                                CornerRadius="50"
+                                HeightRequest="35"
+                                HorizontalOptions="Start"
+                                WidthRequest="35">
+                                <Image Aspect="AspectFit" Source="devices.png" />
+                            </Frame>
+                            <Entry
+                                Margin="0,0,15,0"
+                                FontAttributes="None"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Device's Name" />
+                        </StackLayout>
+
+                    </Frame>
+                </StackLayout>
+                <StackLayout Margin="0,15,0,0">
+                    <Frame
+                        Margin="0"
+                        Padding="2"
+                        BorderColor="DarkGray"
+                        CornerRadius="50"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="7"
+                                Padding="5"
+                                BackgroundColor="AliceBlue"
+                                CornerRadius="50"
+                                HeightRequest="35"
+                                HorizontalOptions="Start"
+                                WidthRequest="35">
+                                <Image Source="mail.png" />
+
+                            </Frame>
+                            <Entry
+                                Margin="0,0,15,0"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Email"
+                                Placeholder="Email Address" />
+                        </StackLayout>
+
+                    </Frame>
+                </StackLayout>
+                <StackLayout x:Name="controllerPasswordStack" Margin="0,15,0,0">
+                    <Frame
+                        Margin="0"
+                        Padding="2"
+                        BorderColor="DarkGray"
+                        CornerRadius="50"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="7"
+                                Padding="5"
+                                BackgroundColor="AliceBlue"
+                                CornerRadius="50"
+                                HeightRequest="35"
+                                HorizontalOptions="Start"
+                                WidthRequest="35">
+                                <Image Source="password.png" />
+                            </Frame>
+                            <Entry
+                                x:Name="controllerPasswordEntry"
+                                Margin="0,0,0,0"
+                                ClearButtonVisibility="Never"
+                                HorizontalOptions="FillAndExpand"
+                                IsPassword="True"
+                                Placeholder="Enter Password" />
+                            <Image
+                                x:Name="passwordControllerEyeImage"
+                                Margin="0,0,10,0"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="eye.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerPasswordEyeIconTap" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Margin="0,15,0,0">
+                    <Frame
+                        Margin="0"
+                        Padding="2"
+                        BorderColor="DarkGray"
+                        CornerRadius="50"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="7"
+                                Padding="5"
+                                BackgroundColor="AliceBlue"
+                                CornerRadius="50"
+                                HeightRequest="35"
+                                HorizontalOptions="Start"
+                                WidthRequest="35">
+                                <Image Source="password.png" />
+                            </Frame>
+                            <Entry
+                                x:Name="controllerConfirmPasswordEntry"
+                                Margin="0,0,0,0"
+                                ClearButtonVisibility="Never"
+                                HorizontalOptions="FillAndExpand"
+                                IsPassword="True"
+                                Placeholder="Confirm Password" />
+                            <Image
+                                x:Name="controllerPasswordEyeImage"
+                                Margin="0,0,10,0"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="eye.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerConfirmEyeIconTap" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Button
+                    Margin="0,10,0,10"
+                    Padding="50,0,50,0"
+                    BackgroundColor="White"
+                    Clicked="OnRegisterClicked"
+                    CornerRadius="30"
+                    FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Register"
+                    TextColor="Black" />
+
+
+            </StackLayout>
         </Grid>
-    </StackLayout>
+    </Grid>
 </ContentPage>
+

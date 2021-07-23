@@ -7,14 +7,37 @@
         <Color x:Key="newBlue">#1e3d59</Color>
         <Color x:Key="newBlack">Black</Color>
         <Color x:Key="newWhite">White</Color>
+        <Color x:Key="primaryTextColor">White</Color>
+        <Color x:Key="primaryBackGroundColor">#181818</Color>
+        <Color x:Key="primaryEntryBackgroundColor">#EE12121B</Color>
         <Color x:Key="highlightWhite">#ECE3C7</Color>
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource primaryBackGroundColor}" />
+        </Style>
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="Black" />
             <Setter Property="BarTextColor" Value="White" />
         </Style>
         <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="RegularFont" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+        </Style>
+        <Style x:Key="HighlightLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+        </Style>
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
             <Setter Property="FontFamily" Value="SemiBoldFont" />
-            <Setter Property="TextColor" Value="{StaticResource newBlue}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+        </Style>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="30" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="FontFamily" Value="BoldFont" />
         </Style>
     </Application.Resources>
 </Application>
