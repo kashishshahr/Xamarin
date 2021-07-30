@@ -1,187 +1,181 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Tasks.ControllerPage"
+    x:Class="Tasks.Pages.ControllerPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
-    <NavigationPage.TitleView>
-        <Label
-            FontAttributes="Bold"
-            FontSize="22"
-            Text="Controller"
-            TextColor="White" />
-    </NavigationPage.TitleView>
+    xmlns:converters="clr-namespace:Tasks.Converter"
+    xmlns:vm="clr-namespace:Tasks.ViewModel"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="ContentPage"
+    Title="Controller"
+    BackgroundColor="{x:StaticResource primaryBackGroundColor}">
 
     <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
-        </Style>
-        <Style TargetType="Entry">
-            <Setter Property="PlaceholderColor" Value="Gray" />
-            <Setter Property="ReturnType" Value="Next" />
-            <Setter Property="CharacterSpacing" Value="1" />
-            <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
-            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
-            <Setter Property="FontFamily" Value="RegularFont" />
 
+        <Style TargetType="ImageButton">
+            <Setter Property="HeightRequest" Value="70" />
+            <Setter Property="WidthRequest" Value="30" />
 
         </Style>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="#EE12121B" />
+            <Setter Property="Padding" Value="0" />
+
         </Style>
+        <converters:BoolToColorConverter x:Key="booltocolorConverter" />
+        <converters:boolToAssignedConverter x:Key="booltoAssignedConverter" />
+        <vm:AgentViewModel x:Key="agentVm" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Frame Padding="0" BackgroundColor="Black" />
-            <StackLayout>
-                <ProgressBar
-                    x:Name="RegisterProgressBar"
-                    Margin="0,-5,0,0"
-                    IsVisible="false"
-                    Progress="0" />
+        <StackLayout>
+            <Label
+                Margin="0,20,0,0"
+                FontFamily="SemiBoldFont"
+                FontSize="20"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding controller.DeviceName}"
+                VerticalOptions="CenterAndExpand" />
 
+            <SearchBar
+                x:Name="searchBar"
+                BackgroundColor="{StaticResource newWhite}"
+                FontFamily="ItalicFont"
+                FontSize="Medium"
+                Placeholder="Search here"
+                PlaceholderColor="{StaticResource newBlack}"
+                SearchButtonPressed="SearchButtonPressed"
+                SearchCommand="{Binding PerformSearch}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+                TextChanged="SearchTextChanged"
+                TextColor="{StaticResource newBlack}">
+                <SearchBar.BindingContext>
+                    <vm:SearchViewModel />
+                </SearchBar.BindingContext>
+            </SearchBar>
 
-                <StackLayout Margin="5,5,5,20">
-                    <Label
-                        Margin="10"
-                        FontFamily="SemiBoldFont"
-                        FontSize="25">
-                        Lets set it up!!!
-                    </Label>
-
-                    <Label
-                        Margin="10"
-                        FontFamily="SemiBoldFont"
-                        FontSize="20">
-                        Fill up following details to create a new controller
-                    </Label>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Aspect="AspectFit" Source="devices.png" />
-
-                                </Frame>
-
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    FontAttributes="None"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Device's Name" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="mail.png" />
-
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Keyboard="Email"
-                                    Placeholder="Email Address" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-
-                    <StackLayout Margin="0,25,0,0">
-                        <Frame
-                            Margin="0"
-                            Padding="2"
-                            BorderColor="DarkGray"
-                            CornerRadius="50"
-                            HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Margin="7"
-                                    Padding="5"
-                                    BackgroundColor="AliceBlue"
-                                    CornerRadius="50"
-                                    HeightRequest="35"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="35">
-                                    <Image Source="password.png" />
-                                </Frame>
-                                <Entry
-                                    Margin="0,0,15,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsPassword="True"
-                                    Placeholder="Confirm Password" />
-                            </StackLayout>
-
-                        </Frame>
-                    </StackLayout>
-
-                    <Button
-                        Margin="0,50,0,0"
-                        Padding="50,0,50,0"
-                        BackgroundColor="White"
-                        Clicked="OnRegisterClicked"
-                        CornerRadius="30"
-                        FontAttributes="Bold"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Register"
-                        TextColor="Black" />
-                </StackLayout>
+            <StackLayout Margin="0,20,0,20" Orientation="Horizontal">
+                <Label
+                    Margin="40,25,0,0"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="Agents" />
+                <Button
+                    Padding="10,0"
+                    xct:ShadowEffect.Color="Black"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    Clicked="AddAgentToList"
+                    HorizontalOptions="EndAndExpand"
+                    Text="+ Add Agent"
+                    TextColor="White" />
             </StackLayout>
-        </Grid>
+
+            <Label
+                x:Name="Not_Found"
+                IsVisible="false"
+                Text="No Agents Found..." />
+            <CollectionView
+                x:Name="AgentsCollection"
+                Margin="0,0,0,0"
+                IsVisible="true"
+                ItemsSource="{Binding Agents}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout Orientation="Vertical">
+                            <SwipeView Threshold="130">
+
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Reveal">
+                                        <SwipeItem BackgroundColor="{Binding IsAssigned, Converter={StaticResource booltocolorConverter}}" Text="{Binding IsAssigned, Converter={StaticResource booltoAssignedConverter}}" />
+
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <Frame Padding="10" BackgroundColor="{StaticResource primaryEntryBackgroundColor}">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
+                                        <BoxView
+                                            Margin="0,0,5,0"
+                                            BackgroundColor="{Binding IsAssigned, Converter={StaticResource booltocolorConverter}}"
+                                            CornerRadius="5"
+                                            HorizontalOptions="Start"
+                                            WidthRequest="5" />
+                                        <Frame
+                                            Margin="15,5,0,0"
+                                            Padding="0"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="40"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                Grid.Column="0"
+                                                Margin="0"
+                                                Source="{Binding AgentImageUrl}" />
+                                        </Frame>
+                                        <StackLayout
+                                            Grid.Column="1"
+                                            Margin="10,0,0,0"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                x:Name="Title"
+                                                FontFamily="RegularFont"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding AgentName}"
+                                                VerticalOptions="CenterAndExpand" />
+                                            <StackLayout
+                                                Margin="0,0,10,0"
+                                                HorizontalOptions="EndAndExpand"
+                                                Orientation="Horizontal"
+                                                Spacing="20">
+
+                                                <Frame BackgroundColor="Transparent" IsVisible="{Binding IsTrackable}">
+                                                    <ImageButton
+                                                        BackgroundColor="Transparent"
+                                                        Clicked="LocationOfAgentImageClickedAsync"
+                                                        Command="{Binding BindingContext.PinPointAgentCommand, Source={x:Reference AgentsCollection}}"
+                                                        CommandParameter="{Binding .}"
+                                                        Source="pinpoint.png" />
+                                                </Frame>
+                                                <Frame BackgroundColor="Transparent">
+
+                                                    <ImageButton
+                                                        BackgroundColor="Transparent"
+                                                        Clicked="EditAgenImageClickedAsync"
+                                                        Command="{Binding BindingContext.EditSelectedAgent, Source={x:Reference AgentsCollection}}"
+                                                        CommandParameter="{Binding .}"
+                                                        Source="pencilIcon.png" />
+                                                </Frame>
+                                                <Frame BackgroundColor="Transparent">
+                                                    <ImageButton
+                                                        BackgroundColor="Transparent"
+                                                        Clicked="DeleteAgenImageClickedAsync"
+                                                        Command="{Binding BindingContext.DeleteSelectedAgent, Source={x:Reference AgentsCollection}}"
+                                                        CommandParameter="{Binding .}"
+                                                        Source="dustbinIcon.png" />
+                                                </Frame>
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

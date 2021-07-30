@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\controller.jpg" />
+    <None Remove="Old\images\controller.jpg" />
     <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Italic.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Light.ttf" />
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="images\controller.jpg" />
+    <EmbeddedResource Include="Old\images\controller.jpg" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Italic.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Light.ttf" />
@@ -58,8 +58,17 @@
     <Compile Update="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="OldPages\OldMainPage.xaml.cs">
+    <Compile Update="MyResource.xaml.cs">
+      <DependentUpon>MyResource.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Old\OldPages\OldMainPage.xaml.cs">
       <DependentUpon>OldMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Old\OldPages\Pages\OldControllerPage.xaml.cs">
+      <DependentUpon>OldControllerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ControllerPage.xaml.cs">
+      <DependentUpon>ControllerPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="TabViewSetup.xaml.cs">
       <DependentUpon>TabViewSetup.xaml</DependentUpon>
@@ -67,25 +76,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\AgentPage.xaml">
+    <EmbeddedResource Update="MyResource.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\OldPages\Pages\AgentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\OldPages\Pages\OldControllerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\OldPages\OldMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\TabbedPages\AgentTabPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\TabbedPages\ContainerTabPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Old\TabbedPages\ControllerTabPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AddAgentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ControllerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="OldPages\OldMainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="TabbedPages\AgentTabPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="TabbedPages\ContainerTabPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="TabbedPages\ControllerTabPage.xaml">
+    <EmbeddedResource Update="Pages\EditAgentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TabViewSetup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ControllerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

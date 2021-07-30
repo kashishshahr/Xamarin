@@ -1,33 +1,96 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Tasks.ViewModel;
+using System;
+using Tasks.Models;
+using System.Threading.Tasks;
+using Tasks.TabbedPages;
 
-namespace Tasks
+namespace Tasks.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
     public partial class ControllerPage : ContentPage
     {
-        public ControllerPage()
+        AgentService agentService;
+        AgentViewModel agentViewModel;
+        ControllerViewModel ControllerViewModel;
+
+        public Command AgentAssignmentCommand { get; private set; }
+
+        public ControllerPage(ControllerViewModel controllerViewModel)
         {
             InitializeComponent();
+            ControllerViewModel = controllerViewModel;
+            this.BindingContext = ControllerViewModel;
+            agentService = new AgentService();
+            agentViewModel = new AgentViewModel();
+            AgentsCollection.BindingContext = agentViewModel;
+
+            AgentAssignmentCommand = new Command((agent) =>
+            {
+                Agent selectedAgentObject = (agent as Agent);
+                bool assign = selectedAgentObject.IsAssigned;
+                Console.WriteLine(selectedAgentObject.AgentName);
+                selectedAgentObject.IsAssigned = !assign;
+            });
+
+        }
+        private async Task animationAsync(View btn)
+        {
+            await btn.ScaleTo(0.75, 100);
+            await btn.ScaleTo(1, 100);
+
+        }
+        private async void EditAgenImageClickedAsync(object sender, EventArgs e)
+        {
+            ImageButton b = sender as ImageButton;
+            await animationAsync(b);
             
         }
-        
-
-        private async void OnRegisterClicked(object sender, EventArgs e)
+        private async void LocationOfAgentImageClickedAsync(object sender, EventArgs e)
         {
-            RegisterProgressBar.IsVisible = true;
-          var x=await ProgressBarProgressAsync(RegisterProgressBar);
-            
+            ImageButton b = sender as ImageButton;
+            await animationAsync(b);
+          
             
         }
 
-        private async Task<bool> ProgressBarProgressAsync(ProgressBar p)
+        private async void DeleteAgenImageClickedAsync(object sender, EventArgs e)
         {
-            return await p.ProgressTo(1.0, 2000, Easing.Linear);
+            ImageButton b = sender as ImageButton;
+            await animationAsync(b);
+        }
+
+    
+
+        private async void AddAgentToList(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            animationAsync(b);
+            await Navigation.PushAsync(new AddAgentPage(ControllerViewModel));
+        }
+
+        private void SearchButtonPressed(object sender, EventArgs e)
+        {
+
+            //AgentsCollection.ItemsSource = searchBar. SearchResults;
+            //searchResult.IsVisible = true;
+        }
+
+        private void SearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+             var res= AgentService.GetSearchResults(searchBar.Text);
+            if (res.Count != 0)
+            {
+                Not_Found.IsVisible = false;
+                AgentsCollection.ItemsSource = res;
+            }
+            else
+            {
+                AgentsCollection.ItemsSource = null;
+                Not_Found.IsVisible = true;
+            }
         }
     }
 }

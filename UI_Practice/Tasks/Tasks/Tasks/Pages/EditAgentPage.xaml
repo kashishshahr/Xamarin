@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tasks.Pages.EditAgentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Tasks.ViewModel"
+    x:Name="ContentPage"
+    Title="Edit Agent"
+    BackgroundColor="{x:StaticResource primaryBackGroundColor}">
+    <ContentPage.Resources>
+
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource primaryEntryBackgroundColor}" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout
+            Margin="10,0"
+            Spacing="30"
+            VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    x:Name="AgentIdEntry"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False"
+                    Text="{Binding AgentId}"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Agent Name" VerticalOptions="Center" />
+                <Entry
+                    x:Name="AgentNameEntry"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding AgentName, Mode=TwoWay}"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="200" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    Margin="0,0,0,0"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Agent Description"
+                    VerticalOptions="CenterAndExpand" />
+                <Editor
+                    x:Name="AgentDecriptionEntry"
+                    Margin="0,0,0,0"
+                    AutoSize="TextChanges"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="{Binding AgentDecription, Mode=TwoWay}"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="250" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Agent Image" />
+                <Image
+                    x:Name="AgentImageUrlEntry"
+                    HeightRequest="50"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding AgentImageUrl, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <Button
+                Padding="50,0"
+                Clicked="Button_Clicked"
+                Command="{Binding EditingAgentCommand}"
+                CommandParameter="{Binding BindingContext, Source={x:Reference ContentPage}}"
+                HorizontalOptions="Center"
+                Style="{StaticResource Button}"
+                Text="Submit">
+                <Button.BindingContext>
+                    <vm:AgentViewModel />
+                </Button.BindingContext>
+            </Button>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

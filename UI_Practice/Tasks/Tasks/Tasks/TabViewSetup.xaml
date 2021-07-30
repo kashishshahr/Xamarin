@@ -6,63 +6,32 @@
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:vm="clr-namespace:Tasks.ViewModel"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="MainTabPage"
+    Title="Setup"
     BackgroundColor="{StaticResource primaryBackGroundColor}">
-
-    <NavigationPage.TitleView>
-        <Label
-            HorizontalTextAlignment="Start"
-            Style="{StaticResource TitleLabelStyle}"
-            Text="Setup" />
-    </NavigationPage.TitleView>
-    <ContentPage.BindingContext>
-        <vm:AgentViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="HorizontalTextAlignment" Value="Center" />
         </Style>
-        <Style TargetType="Entry">
-            <Setter Property="PlaceholderColor" Value="Gray" />
-            <Setter Property="ReturnType" Value="Next" />
-            <Setter Property="CharacterSpacing" Value="1" />
-            <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
-            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
-            <Setter Property="FontFamily" Value="RegularFont" />
-            <Setter Property="FontSize" Value="16" />
-        </Style>
+
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="{StaticResource primaryEntryBackgroundColor}" />
         </Style>
-        <Style TargetType="Button">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
 
-
-                        <VisualState x:Name="Disabled">
-                            <VisualState.Setters>
-                                <Setter Property="Opacity" Value="0.5" />
-                                <Setter Property="TextColor" Value="Black" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
     </ContentPage.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="350" />
+            <RowDefinition Height="130" />
+            <RowDefinition Height="Auto" />
 
         </Grid.RowDefinitions>
         <ProgressBar
             x:Name="RegisterProgressBar"
             Grid.Row="0"
             Grid.Column="0"
-            Margin="0,0,0,0"
+            Margin="0,-7,0,0"
             IsVisible="false"
             Progress="0"
             ProgressColor="AliceBlue"
@@ -70,7 +39,7 @@
         <StackLayout
             x:Name="SlideViewStack"
             Grid.Row="0"
-            Margin="0,0,0,0"
+            Margin="0,20,0,0"
             Spacing="10">
 
             <Label
@@ -143,7 +112,7 @@
         <Grid
             x:Name="AgentVisible"
             Grid.Row="1"
-            Margin="5,15,5,0"
+            Margin="10,0,10,10"
             xct:ShadowEffect.Color="Black"
             VerticalOptions="Start">
             <Frame
@@ -217,10 +186,12 @@
                                             x:Name="agentPasswordEntry"
                                             Margin="0,0,0,0"
                                             ClearButtonVisibility="Never"
+                                            Focused="OnAgentPasswordEntryFocus"
                                             HorizontalOptions="FillAndExpand"
                                             IsPassword="True"
                                             Placeholder="Controller's Password"
-                                            TextChanged="AgentPasswordTextChanged" />
+                                            TextChanged="AgentPasswordTextChanged"
+                                            Unfocused="OnAgentPasswordEntryUnFocus" />
                                         <Image
                                             x:Name="agentPasswordEyeImage"
                                             Margin="0,0,10,0"
@@ -234,34 +205,36 @@
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                                 <Label
                                     FontFamily="RegularFont"
                                     FontSize="16"
-                                    HorizontalOptions="CenterAndExpand"
                                     Text="Agent:" />
-                                <StackLayout x:Name="agentOfDeviceStack" HorizontalOptions="CenterAndExpand">
+                                <StackLayout x:Name="agentOfDeviceStack">
                                     <Frame
                                         Margin="0"
-                                        Padding="2"
+                                        Padding="5"
                                         BorderColor="DarkGray"
                                         CornerRadius="50"
-                                        HorizontalOptions="FillAndExpand">
+                                        HeightRequest="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        WidthRequest="200">
                                         <StackLayout Padding="20,0,10,0" Orientation="Horizontal">
 
-                                            <Entry
+                                            <Label
                                                 x:Name="agentOfDeviceEntry"
                                                 Margin="0,0,0,0"
-                                                ClearButtonVisibility="Never"
+                                                CharacterSpacing="1"
+                                                FontSize="16"
                                                 HorizontalOptions="FillAndExpand"
                                                 IsEnabled="False"
-                                                Placeholder="Agent's Name"
-                                                Text="Agent Name" />
+                                                Text="{Binding SelectedAgent.AgentName, TargetNullValue='Select'}"
+                                                TextColor="Gray" />
                                             <ImageButton
                                                 x:Name="agentOfDeviceImage"
                                                 Margin="0,0,10,0"
                                                 BackgroundColor="Transparent"
-                                                Clicked="OnAgentGoClickedAsync"
+                                                Clicked="OnAgentGo_UparrowClickedAsync"
                                                 HeightRequest="30"
                                                 HorizontalOptions="End"
                                                 Source="uparrow.png" />
@@ -354,19 +327,18 @@
                                             HorizontalOptions="Start"
                                             Text="{Binding AgentName}"
                                             VerticalOptions="CenterAndExpand" />
+
                                         <ImageButton
                                             Margin="0,0,20,0"
                                             BackgroundColor="Transparent"
                                             Clicked="OnAgentSelectedAsync"
+                                            Command="{Binding Path=BindingContext.AgentSelectedCommand, Source={x:Reference MainTabPage}}"
+                                            CommandParameter="{Binding .}"
                                             HeightRequest="30"
                                             HorizontalOptions="EndAndExpand"
                                             Source="plus.png" />
                                     </StackLayout>
-
-
                                 </Grid>
-
-
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -376,14 +348,15 @@
         <Grid
             x:Name="ControllerVisible"
             Grid.Row="1"
-            Margin="10"
+            Margin="10,0,10,10"
             VerticalOptions="Start">
             <Frame
                 Padding="0"
                 xct:ShadowEffect.Color="Black"
                 BackgroundColor="#282828"
                 CornerRadius="10" />
-            <StackLayout Padding="10,0,10,0">
+            <StackLayout x:Name="ControllerStack2" Padding="10,0,10,0">
+
                 <Label
                     Margin="10,10,10,10"
                     HorizontalOptions="Center"
@@ -391,7 +364,7 @@
                     Style="{StaticResource TitleLabelStyle}">
                     Fill up following details to create a new controller
                 </Label>
-                <StackLayout Margin="0,15,0,0">
+                <StackLayout Margin="0,0,0,0">
                     <Frame
                         Margin="0"
                         Padding="2"
@@ -413,7 +386,8 @@
                                 Margin="0,0,15,0"
                                 FontAttributes="None"
                                 HorizontalOptions="FillAndExpand"
-                                Placeholder="Device's Name" />
+                                Placeholder="Device's Name"
+                                Text="{Binding controller.DeviceName}" />
                         </StackLayout>
 
                     </Frame>
@@ -441,7 +415,8 @@
                                 Margin="0,0,15,0"
                                 HorizontalOptions="FillAndExpand"
                                 Keyboard="Email"
-                                Placeholder="Email Address" />
+                                Placeholder="Email Address"
+                                Text="{Binding controller.Email}" />
                         </StackLayout>
 
                     </Frame>
@@ -468,9 +443,12 @@
                                 x:Name="controllerPasswordEntry"
                                 Margin="0,0,0,0"
                                 ClearButtonVisibility="Never"
+                                Focused="OnControllerPasswordEntryFocus"
                                 HorizontalOptions="FillAndExpand"
                                 IsPassword="True"
-                                Placeholder="Enter Password" />
+                                Placeholder="Enter Password"
+                                Text="{Binding controller.Password}"
+                                Unfocused="OnControllerPasswordEntryUnFocus" />
                             <Image
                                 x:Name="passwordControllerEyeImage"
                                 Margin="0,0,10,0"
@@ -506,9 +484,12 @@
                                 x:Name="controllerConfirmPasswordEntry"
                                 Margin="0,0,0,0"
                                 ClearButtonVisibility="Never"
+                                Focused="OnContrllerConfirmPasswordFocus"
                                 HorizontalOptions="FillAndExpand"
                                 IsPassword="True"
-                                Placeholder="Confirm Password" />
+                                Placeholder="Confirm Password"
+                                Text="{Binding controller.Password}"
+                                Unfocused="OnContrllerConfirmPasswordUnFocus" />
                             <Image
                                 x:Name="controllerPasswordEyeImage"
                                 Margin="0,0,10,0"
@@ -527,6 +508,7 @@
                     Padding="50,0,50,0"
                     BackgroundColor="White"
                     Clicked="OnRegisterClicked"
+                    Command="{Binding registerCommand}"
                     CornerRadius="30"
                     FontAttributes="Bold"
                     HorizontalOptions="CenterAndExpand"

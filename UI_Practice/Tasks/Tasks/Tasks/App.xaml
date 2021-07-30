@@ -4,13 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
-        <Color x:Key="newBlue">#1e3d59</Color>
-        <Color x:Key="newBlack">Black</Color>
-        <Color x:Key="newWhite">White</Color>
-        <Color x:Key="primaryTextColor">White</Color>
-        <Color x:Key="primaryBackGroundColor">#181818</Color>
-        <Color x:Key="primaryEntryBackgroundColor">#EE12121B</Color>
-        <Color x:Key="highlightWhite">#ECE3C7</Color>
+        <ResourceDictionary Source="MyResource.xaml" />
         <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{StaticResource primaryBackGroundColor}" />
         </Style>
@@ -39,5 +33,16 @@
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="FontFamily" Value="BoldFont" />
         </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="Gray" />
+            <Setter Property="ReturnType" Value="Next" />
+            <Setter Property="CharacterSpacing" Value="1" />
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+            <Setter Property="TextColor" Value="{StaticResource newWhite}" />
+            <Setter Property="FontFamily" Value="RegularFont" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
     </Application.Resources>
 </Application>

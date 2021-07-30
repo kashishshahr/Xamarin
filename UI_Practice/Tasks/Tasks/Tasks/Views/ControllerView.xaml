@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Tasks.Views.ControllerView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <Grid>
+        <Frame
+            Padding="0"
+            xct:ShadowEffect.Color="Black"
+            BackgroundColor="#282828"
+            CornerRadius="10" />
+        <StackLayout Padding="10,0,10,0">
+            <Label
+                Margin="10,10,10,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource TitleLabelStyle}">
+                Fill up following details to create a new controller
+            </Label>
+            <StackLayout Margin="0,15,0,0">
+                <Frame
+                    Margin="0"
+                    Padding="2"
+                    BorderColor="DarkGray"
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="7"
+                            Padding="5"
+                            BackgroundColor="AliceBlue"
+                            CornerRadius="50"
+                            HeightRequest="35"
+                            HorizontalOptions="Start"
+                            WidthRequest="35">
+                            <Image Aspect="AspectFit" Source="devices.png" />
+                        </Frame>
+                        <Entry
+                            Margin="0,0,15,0"
+                            FontAttributes="None"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Device's Name" />
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0">
+                <Frame
+                    Margin="0"
+                    Padding="2"
+                    BorderColor="DarkGray"
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="7"
+                            Padding="5"
+                            BackgroundColor="AliceBlue"
+                            CornerRadius="50"
+                            HeightRequest="35"
+                            HorizontalOptions="Start"
+                            WidthRequest="35">
+                            <Image Source="mail.png" />
+
+                        </Frame>
+                        <Entry
+                            Margin="0,0,15,0"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Email"
+                            Placeholder="Email Address" />
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+            <StackLayout x:Name="controllerPasswordStack" Margin="0,15,0,0">
+                <Frame
+                    Margin="0"
+                    Padding="2"
+                    BorderColor="DarkGray"
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="7"
+                            Padding="5"
+                            BackgroundColor="AliceBlue"
+                            CornerRadius="50"
+                            HeightRequest="35"
+                            HorizontalOptions="Start"
+                            WidthRequest="35">
+                            <Image Source="password.png" />
+                        </Frame>
+                        <Entry
+                            x:Name="controllerPasswordEntry"
+                            Margin="0,0,0,0"
+                            ClearButtonVisibility="Never"
+                            Focused="OnControllerPasswordEntryFocus"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Enter Password"
+                            Unfocused="OnControllerPasswordEntryUnFocus" />
+                        <Image
+                            x:Name="passwordControllerEyeImage"
+                            Margin="0,0,10,0"
+                            HeightRequest="30"
+                            HorizontalOptions="End"
+                            Source="eye.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerPasswordEyeIconTap" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0">
+                <Frame
+                    Margin="0"
+                    Padding="2"
+                    BorderColor="DarkGray"
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="7"
+                            Padding="5"
+                            BackgroundColor="AliceBlue"
+                            CornerRadius="50"
+                            HeightRequest="35"
+                            HorizontalOptions="Start"
+                            WidthRequest="35">
+                            <Image Source="password.png" />
+                        </Frame>
+                        <Entry
+                            x:Name="controllerConfirmPasswordEntry"
+                            Margin="0,0,0,0"
+                            ClearButtonVisibility="Never"
+                            Focused="OnContrllerConfirmPasswordFocus"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Confirm Password"
+                            Unfocused="OnContrllerConfirmPasswordUnFocus" />
+                        <Image
+                            x:Name="controllerPasswordEyeImage"
+                            Margin="0,0,10,0"
+                            HeightRequest="30"
+                            HorizontalOptions="End"
+                            Source="eye.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnControllerConfirmEyeIconTap" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Button
+                Margin="0,10,0,10"
+                Padding="50,0,50,0"
+                BackgroundColor="White"
+                Clicked="OnRegisterClicked"
+                CornerRadius="30"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                Text="Register"
+                TextColor="Black" />
+
+
+        </StackLayout>
+    </Grid>
+</ContentView>

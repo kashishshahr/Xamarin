@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tasks.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,7 +32,7 @@ namespace Tasks
         private async void OnSetUp(object sender, EventArgs e)
         {
             if(Role=="Controller")
-                await Navigation.PushAsync(new ControllerPage());
+                await Navigation.PushAsync(new OldControllerPage());
             else if (Role == "Agent")
                 await Navigation.PushAsync(new AgentPage());
         }   

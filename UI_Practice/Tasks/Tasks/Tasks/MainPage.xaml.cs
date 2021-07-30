@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Tasks.Pages;
 using Xamarin.Forms;
 
 namespace Tasks
@@ -68,7 +65,7 @@ namespace Tasks
 
             setupButton.Scale = 1;
             if (ControllerRadio) {
-                await Navigation.PushAsync(new ControllerPage());
+                await Navigation.PushAsync(new OldControllerPage());
             }
                 
             else if (AgentRadio) {

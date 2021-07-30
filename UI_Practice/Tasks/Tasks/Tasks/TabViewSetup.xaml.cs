@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Tasks.Models;
+using Tasks.Pages;
+using Tasks.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+  
 namespace Tasks
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,9 +18,20 @@ namespace Tasks
         Color NormalColor;
         string agentname = string.Empty;
         string agentPassword = string.Empty;
+        ControllerViewModel controllerViewModel;
+        AgentViewModel agentViewModel;
         public TabViewSetup()
         {
             InitializeComponent();
+            agentViewModel = new AgentViewModel();
+            controllerViewModel = new ControllerViewModel();
+            ControllerStack2.BindingContext = controllerViewModel;
+            BindingContext = agentViewModel;
+            
+
+            agentPasswordEyeImage.IsVisible = false;
+            passwordControllerEyeImage.IsVisible = false;
+            controllerPasswordEyeImage.IsVisible = false;
             HighlightColor = Color.FromHex("#282828");
             NormalColor = Color.Black;
             agentPasswordEyeImage.Source = "eye.png";
@@ -64,6 +77,8 @@ namespace Tasks
             Button b = sender as Button;
             await animationAsync(b);
             await ProgressBarProgressAsync(RegisterProgressBar);
+            Controller c=controllerViewModel.controller;
+            await Navigation.PushAsync(new ControllerPage(controllerViewModel));
         }
 
 
@@ -122,13 +137,40 @@ namespace Tasks
 
         }
 
-        private void AgentNameTextChanged(object sender, TextChangedEventArgs e) => CheckForValidation();
-        private void AgentPasswordTextChanged(object sender, TextChangedEventArgs e) => CheckForValidation();
-        private void CheckForValidation()
+        private void AgentNameTextChanged(object sender, TextChangedEventArgs e) 
+            {
+            if(IsAgentEntriesNullOrWhiteSpace())
+            {
+         
+                agentOfDeviceEntry.TextColor = Color.Gray;
+            }
+            else
+            {
+                agentOfDeviceEntry.TextColor = Color.White;
+            }
+        }
+        private void AgentPasswordTextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (IsAgentEntriesNullOrWhiteSpace())
+            {
+            
+                agentOfDeviceEntry.TextColor = Color.Gray;
+            }
+            else
+            {
+                agentOfDeviceEntry.TextColor = Color.White;
+            }
+        }
+        private bool IsAgentEntriesNullOrWhiteSpace()
+        {
+            
             agentname = ControllerDeviceNameEntry.Text;
             agentPassword = agentPasswordEntry.Text;
+            if(string.IsNullOrWhiteSpace(agentname)||string.IsNullOrWhiteSpace(agentPassword))
+            {
+                return true;
+            }
+            return false;
            
         }
 
@@ -147,21 +189,18 @@ namespace Tasks
             AgentListPop.IsVisible = false;
 
         }
-        private async void OnAgentGoClickedAsync(object sender, EventArgs e)
+        private async void OnAgentGo_UparrowClickedAsync(object sender, EventArgs e)
         {
             ImageButton b = sender as ImageButton;
 
-            if (string.IsNullOrWhiteSpace(agentPasswordEntry.Text) || string.IsNullOrWhiteSpace(ControllerDeviceNameEntry.Text))
+            if (IsAgentEntriesNullOrWhiteSpace())
             {
-
                 await DisplayAlert("Invalid", "You must  enter details", "Ok");
             }
             else
             {
-
                 await animationAsync(b);
                 await ProgressBarProgressAsync(RegisterProgressBar);
-
                 AgentListPop.IsVisible = true;
             }
 
@@ -171,13 +210,43 @@ namespace Tasks
         {
             ImageButton imagebutton=sender as ImageButton;
             await animationAsync(imagebutton);
-            await DisplayAlert("Selected", "yes", "ok");
+
+            AgentListPop.IsVisible = false;
+            agentOfDeviceEntry.TextColor = Color.White;
         }
 
         private async void OnLetsGoClickAsync(object sender, EventArgs e)
         {
-            await DisplayAlert("All Done", "Agent selected", "OK");
+            Agent selected = agentViewModel.SelectedAgent;
+            await DisplayAlert("An Agent is assigned to your device", agentOfDeviceEntry.Text, "OK");
         }
 
+
+        private void OnAgentPasswordEntryFocus(object sender, FocusEventArgs e)
+        {
+            agentPasswordEyeImage.IsVisible = true;
+        } private void OnAgentPasswordEntryUnFocus(object sender, FocusEventArgs e)
+        {
+            agentPasswordEyeImage.IsVisible = false;
+        }
+
+        private void OnControllerPasswordEntryFocus(object sender, FocusEventArgs e)
+        {
+            passwordControllerEyeImage.IsVisible = true;
+        }
+        private void OnControllerPasswordEntryUnFocus(object sender, FocusEventArgs e)
+        {
+            passwordControllerEyeImage.IsVisible = false;
+        }
+
+        private void OnContrllerConfirmPasswordFocus(object sender, FocusEventArgs e)
+        {
+            controllerPasswordEyeImage.IsVisible = true;
+        }
+
+        private void OnContrllerConfirmPasswordUnFocus(object sender, FocusEventArgs e)
+        {
+            controllerPasswordEyeImage.IsVisible = false;
+        }
     }
     }
