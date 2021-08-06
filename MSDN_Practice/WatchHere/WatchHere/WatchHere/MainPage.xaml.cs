@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WatchHere.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,92 +18,96 @@ namespace WatchHere
         public MainPage()
         {
             InitializeComponent();
-
+            //0a9b92601b5a4176b7e133629210608 web api key
+            
             Color AmColor = Color.White;
             Color PmColor = Color.Cyan;
-            //List<String> times = new List<string>()
-            //{
-            //    "Indian/Antananarivo","Indian/Chagos","Indian/Christmas","Indian/Cocos","Indian/Comoro","Indian/Kerguelen","Indian/Mahe","Indian/Maldives","Indian/Mauritius","Indian/Mayotte","Indian/Reunion"
-            //};
-            //Console.WriteLine("Kashish");
-            //// Get All Time Zones  
-            //foreach (TimeZoneInfo z in TimeZoneInfo.GetSystemTimeZones())
-            //{
-            //    TimeZoneInfo estZone = TimeZoneInfo.FindSystemTimeZoneById(z.Id.ToString());
-            //    DateTime canTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, estZone);
-            //    Console.WriteLine("Time= {0}:{1}", z.Id, canTime);
-            //}
 
-
+                CountryClass india=new CountryClass(0);
+                CountryClass canada=new CountryClass(1);
+                CountryClass germany = new CountryClass(2);
+                CountryClass london=new CountryClass(3);
+                
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                TimeZoneInfo indianZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Kolkata");
-                TimeZoneInfo CanadaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Canada/Eastern");
-                TimeZoneInfo GermanyTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Berlin");
-                TimeZoneInfo LondonTimeZOne = TimeZoneInfo.FindSystemTimeZoneById("Europe/London");
-
-                DateTime indianZoneTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, indianZone);
-
-                if (indianZoneTime.ToString("tt") == "AM")
+                DateTime[] ZoneTime=new DateTime[4];
+                ZoneTime[0] = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, india.Zone);
+                ZoneTime[1] = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, canada.Zone);
+                ZoneTime[2] = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, germany.Zone);
+                ZoneTime[3] = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, london.Zone);
+                if (india.ZoneTime.ToString("tt") == "AM")
                 {
-                    IndianNameLabel.TextColor =  AmColor;
-                    IndianTimeLabel.TextColor =  AmColor;
+                    IndianNameLabel.TextColor = AmColor;
+                    IndianTimeLabel.TextColor = AmColor;
+                    IndianTempLabel.TextColor = AmColor;
 
                 }
                 else
                 {
-                    IndianTimeLabel.TextColor =  PmColor;
-                    IndianNameLabel.TextColor =  PmColor;
+                    IndianTimeLabel.TextColor = PmColor;
+                    IndianNameLabel.TextColor = PmColor;
+                    IndianTempLabel.TextColor = PmColor;
                 }
 
-                IndianNameLabel.Text = "India";
-                IndianTimeLabel.Text = indianZoneTime.ToString("dd/MM/yyyy    hh:mm:ss:ttt");
+                IndianNameLabel.Text = india.Name;
+                IndianTimeLabel.Text = ZoneTime[0].ToString("dd/MM/yyyy    hh:mm:ss:ttt");
+                IndianTempLabel.Text = india.temp;
                 //------------------------------------------------------------------
-                DateTime CanadaTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, CanadaTimeZone);
-                TorrontoNameLabel.Text = "Canada:Torronto";
-                TorrontoTimeLabel.Text = CanadaTime.ToString("dd/MM/yyyy    hh:mm:ss:ttt");
-                if (CanadaTime.ToString("tt") == "AM")
+
+                TorrontoNameLabel.Text = canada.Name;
+                TorrontoTimeLabel.Text = ZoneTime[1].ToString("dd/MM/yyyy    hh:mm:ss:ttt");
+                TorrontoTempLabel.Text = canada.temp;
+                if (canada.ZoneTime.ToString("tt") == "AM")
                 {
-                    TorrontoNameLabel.TextColor =  AmColor;
-                    TorrontoTimeLabel.TextColor =  AmColor;
+                    TorrontoNameLabel.TextColor = AmColor;
+                    TorrontoTimeLabel.TextColor = AmColor;
+                    TorrontoTempLabel.TextColor = AmColor;
 
                 }
                 else
                 {
-                    TorrontoNameLabel.TextColor =  PmColor;
-                    TorrontoTimeLabel.TextColor =  PmColor;
+                    TorrontoNameLabel.TextColor = PmColor;
+                    TorrontoTimeLabel.TextColor = PmColor;
+                    TorrontoTempLabel.TextColor = PmColor;
                 }
-                DateTime GermanyTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, GermanyTimeZone);
-                FrankfurtNameLabel.Text = "Germany";
-                FrankfurtTimeLabel.Text = GermanyTime.ToString("dd/MM/yyyy    hh:mm:ss tt");
-                if (GermanyTime.ToString("tt") == "AM")
+                
+                FrankfurtNameLabel.Text =germany.Name;
+                FrankfurtTempLabel.Text =germany.temp;
+                FrankfurtTimeLabel.Text = ZoneTime[2].ToString("dd/MM/yyyy    hh:mm:ss tt");
+                if (germany.ZoneTime.ToString("tt") == "AM")
                 {
-                    FrankfurtNameLabel.TextColor =  AmColor;
-                    FrankfurtTimeLabel.TextColor =  AmColor;
+                    FrankfurtNameLabel.TextColor = AmColor;
+                    FrankfurtTimeLabel.TextColor = AmColor;
+                    FrankfurtTempLabel.TextColor = AmColor;
 
                 }
                 else
                 {
-                    FrankfurtNameLabel.TextColor =  PmColor;
-                    FrankfurtTimeLabel.TextColor =  PmColor;
+                    FrankfurtNameLabel.TextColor = PmColor;
+                    FrankfurtTimeLabel.TextColor = PmColor;
+                    FrankfurtTempLabel.TextColor = PmColor;
                 }
-                DateTime LondonTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, LondonTimeZOne);
-                LondonNameLabel.Text = "London";
-                LondonTimeLabel.Text = LondonTime.ToString("dd/MM/yyyy    hh:mm:ss:ttt");
-                if (LondonTime.ToString("tt") == "AM")
+                
+                LondonNameLabel.Text = london.Name;
+                LondonTempLabel.Text = london.temp;
+                LondonTimeLabel.Text = ZoneTime[3].ToString("dd/MM/yyyy    hh:mm:ss:ttt");
+                if (london.ZoneTime.ToString("tt") == "AM")
                 {
-                    LondonNameLabel.TextColor =  AmColor;
-                    LondonTimeLabel.TextColor =  AmColor;
+                    LondonNameLabel.TextColor = AmColor;
+                    LondonTimeLabel.TextColor = AmColor;
+                    LondonTempLabel.TextColor = AmColor;
 
                 }
                 else
                 {
-                    LondonNameLabel.TextColor =  PmColor;
-                    LondonTimeLabel.TextColor =  PmColor;
+                    LondonNameLabel.TextColor = PmColor;
+                    LondonTimeLabel.TextColor = PmColor;
+                    LondonTempLabel.TextColor = PmColor;
                 }
                 return true;
             });
         }
+        
         private void InvisibleClick(object sender, EventArgs e)
         {
             var classId=(sender as Label).ClassId;

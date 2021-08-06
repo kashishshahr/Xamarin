@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Archive>
+  <Name>WatchHere.Android</Name>
+  <PackageName>com.krs.watchhere</PackageName>
+  <PackageVersionCode>1</PackageVersionCode>
+  <PackageVersionName>1.0</PackageVersionName>
+  <PackageFormat>apk</PackageFormat>
+  <CreationDate>637638740994890122</CreationDate>
+  <SolutionName>WatchHere</SolutionName>
+  <SolutionPath>E:\InternShip\Xamarin\MSDN_Practice\WatchHere\WatchHere.sln</SolutionPath>
+  <Status></Status>
+  <Configuration>
+    <DebugMode>false</DebugMode>
+  </Configuration>
+  <Comment />
+  <LastUsedKeystore>C:\Users\admin\AppData\Local\Xamarin\Mono for Android\Keystore\K@1332\K@1332.keystore</LastUsedKeystore>
+  <TimeStampingAuthority />
+  <LastInsightsUploadDate>0</LastInsightsUploadDate>
+</Archive>

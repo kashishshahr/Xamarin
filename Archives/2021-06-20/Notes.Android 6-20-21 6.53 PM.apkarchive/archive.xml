@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Archive>
+  <Name>Notes_DB_KRS</Name>
+  <PackageName>com.krs.notes</PackageName>
+  <PackageVersionCode>1</PackageVersionCode>
+  <PackageVersionName>1.3</PackageVersionName>
+  <PackageFormat>apk</PackageFormat>
+  <CreationDate>637597922091024207</CreationDate>
+  <SolutionName>Notes</SolutionName>
+  <SolutionPath>E:\InternShip\Xamarin\MSDN_Practice\Notes\Notes.sln</SolutionPath>
+  <Status></Status>
+  <Configuration>
+    <DebugMode>false</DebugMode>
+  </Configuration>
+  <Comment />
+  <LastUsedKeystore>C:\Users\admin\AppData\Local\Xamarin\Mono for Android\Keystore\K@1332\K@1332.keystore</LastUsedKeystore>
+  <TimeStampingAuthority />
+  <LastInsightsUploadDate>0</LastInsightsUploadDate>
+</Archive>
