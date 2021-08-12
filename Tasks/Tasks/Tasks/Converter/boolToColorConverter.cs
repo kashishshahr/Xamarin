@@ -10,12 +10,14 @@ namespace Tasks.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var boolValue = (bool)value;
-            if (boolValue)
+            int boolValue = (int)value;
+            if (boolValue==2)
                 return Color.FromHex("009900");
+            else if(boolValue==1)
+                return Color.Yellow;
             else
                 return Color.FromHex("FF3333");
-            throw new NotImplementedException();
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

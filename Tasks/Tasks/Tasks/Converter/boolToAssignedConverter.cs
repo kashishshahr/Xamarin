@@ -10,14 +10,15 @@ namespace Tasks.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var boolValue = (bool)value;
+            int boolValue = (int)value;
+            
             string assigned = "Assigned";
             string notassigned = "Not Assigned";
-            if (boolValue)
-                return assigned;
-            else
+            if (boolValue==0)
                 return notassigned;
-            
+            else
+                return assigned;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -26,13 +26,7 @@ namespace Tasks.Pages
             agentViewModel = new AgentViewModel();
             AgentsCollection.BindingContext = agentViewModel;
 
-            AgentAssignmentCommand = new Command((agent) =>
-            {
-                Agent selectedAgentObject = (agent as Agent);
-                bool assign = selectedAgentObject.IsAssigned;
-                Console.WriteLine(selectedAgentObject.AgentName);
-                selectedAgentObject.IsAssigned = !assign;
-            });
+            
 
         }
         private async Task animationAsync(View btn)

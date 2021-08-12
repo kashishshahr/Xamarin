@@ -23,6 +23,7 @@
         </Style>
         <converters:BoolToColorConverter x:Key="booltocolorConverter" />
         <converters:boolToAssignedConverter x:Key="booltoAssignedConverter" />
+        <converters:inttoboolConverter x:Key="inttoboolConverter" />
         <vm:AgentViewModel x:Key="agentVm" />
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -59,6 +60,8 @@
                     FontAttributes="Bold"
                     FontSize="16"
                     Text="Agents" />
+
+
                 <Button
                     Padding="10,0"
                     xct:ShadowEffect.Color="Black"
@@ -138,8 +141,7 @@
                                                 HorizontalOptions="EndAndExpand"
                                                 Orientation="Horizontal"
                                                 Spacing="20">
-
-                                                <Frame BackgroundColor="Transparent" IsVisible="{Binding IsTrackable}">
+                                                <Frame BackgroundColor="Transparent" IsVisible="{Binding IsAssigned, Converter={x:StaticResource inttoboolConverter}}">
                                                     <ImageButton
                                                         BackgroundColor="Transparent"
                                                         Clicked="LocationOfAgentImageClickedAsync"
@@ -156,6 +158,7 @@
                                                         CommandParameter="{Binding .}"
                                                         Source="pencilIcon.png" />
                                                 </Frame>
+
                                                 <Frame BackgroundColor="Transparent">
                                                     <ImageButton
                                                         BackgroundColor="Transparent"

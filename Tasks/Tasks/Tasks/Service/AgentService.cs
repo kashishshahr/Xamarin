@@ -15,7 +15,63 @@ namespace Tasks.TabbedPages
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        static ObservableCollection<Agent> _listOfAgents=GetAgentList();
+        public static ObservableCollection<Agent> returnData()
+        {
+            return new ObservableCollection<Agent>() {
+                new Agent()
+        {
+
+            AgentId = 2,IsAssigned = 1,AgentName = "Agent Rohan",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,
+                    AgentLocation = "Paldi,Ahmedabad"
+
+
+                },
+                new Agent()
+        {
+            AgentId = 2,AgentName = "Agent Mohan",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 2,
+                    AgentLocation = "A/304,Dev archan flats,Paldi,Ahmedabad"
+
+                },
+                new Agent()
+        {
+            AgentId = 3,AgentName = "Agent Sonu",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 1,
+
+                },
+                new Agent()
+        {
+            AgentId = 4,AgentName = "Agent A",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 0
+                },
+                new Agent()
+        {
+            AgentId = 5,AgentName = "Agent B",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 1
+                },
+                new Agent()
+        {
+            AgentId = 6,AgentName = "Agent C",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 0
+                },
+                new Agent()
+        {
+            AgentId = 7,AgentName = "Agent D",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 1
+                },
+                new Agent()
+        {
+            AgentId = 8,AgentName = "Agent E",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 2,
+
+                },
+                new Agent()
+        {
+            AgentId = 9,AgentName = "Agent F",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 0,
+
+                },
+                new Agent()
+        {
+            AgentId = 10,AgentName = "Agent G",AgentDecription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl = imageLink,IsAssigned = 0,
+
+                },
+            };
+        }
+        
+        static ObservableCollection<Agent> _listOfAgents;
         public ObservableCollection<Agent> listOfAgents { get { return _listOfAgents; } 
             set 
             { 
@@ -31,55 +87,8 @@ namespace Tasks.TabbedPages
         public AgentService()
         {
 
-            listOfAgents = new ObservableCollection<Agent>() {
-                new Agent()
-                {
-
-                    AgentId=1,IsAssigned=true,AgentName="Agent Rohan",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,
-                    IsTrackable=true
-                },
-                new Agent()
-                {
-                    AgentId=2,AgentName="Agent Mohan",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=true,
-                    IsTrackable=true
-        },
-                new Agent()
-                {
-                    AgentId=3,AgentName="Agent Sonu",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=true,
-                    IsTrackable=false
-                },
-                new Agent()
-                {
-                    AgentId=4,AgentName="Agent A",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=false
-                },
-                new Agent()
-                {
-                    AgentId=5,AgentName="Agent B",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=false
-                },
-                new Agent()
-                {
-                    AgentId=6,AgentName="Agent C",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=false
-                },
-                new Agent()
-                {
-                    AgentId=7,AgentName="Agent D",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=false
-                },
-                new Agent()
-                {
-                    AgentId=8,AgentName="Agent E",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=true,
-                    IsTrackable=true
-                },
-                new Agent()
-                {
-                    AgentId=9,AgentName="Agent F",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=true,
-                    IsTrackable=false
-                },
-                new Agent()
-                {
-                    AgentId=10,AgentName="Agent G",AgentDecription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",AgentImageUrl=imageLink,IsAssigned=true,
-                    IsTrackable=true
-                },
-            };
+            listOfAgents = returnData();
+            _listOfAgents = listOfAgents;
         }
 
         public static ObservableCollection<Agent> GetSearchResults(string text)
@@ -91,6 +100,7 @@ namespace Tasks.TabbedPages
 
         public static ObservableCollection<Agent> GetAgentList()
         {
+            
             return _listOfAgents;
         }
         public static Agent GetAgent(int id)

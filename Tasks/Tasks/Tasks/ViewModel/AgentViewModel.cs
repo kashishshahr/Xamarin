@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Tasks.Pages;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Essentials;
 
 namespace Tasks.ViewModel
 {
@@ -47,9 +48,12 @@ namespace Tasks.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
             public Agent oldAgent;
+        
+        public ObservableCollection<Agent> _CollectionOfAgents;
+        public ObservableCollection<Agent> CollectionOfAgents { get { return _CollectionOfAgents; } set { _CollectionOfAgents = value; OnPropertyChanged(nameof(CollectionOfAgents)); } }
         public AgentViewModel()
         {
-
+            CollectionOfAgents = AgentService.returnData();
             Agents = AgentService.GetAgentList();
             SelectedAgent = null;
             AgentSelectedCommand = new Command((agent) =>
@@ -78,26 +82,43 @@ namespace Tasks.ViewModel
             {
                 Console.WriteLine("In PinPoint");
                 Agent selectedAgentObject = (Agent)agent;
-                ContentPage cp = new ContentPage();
-                cp.Title = "Location Tracking Page";
-                Label label = new Label();
-                label.Text = selectedAgentObject.AgentDecription;
-                Label agentNamelabel = new Label();
-                agentNamelabel.Text = selectedAgentObject.AgentName;
-                Image image = new Image();
-                image.HeightRequest = 50;
-                image.WidthRequest = 50;
-                image.Source = "appbg.png";
-                StackLayout panel = new StackLayout { 
-                HorizontalOptions=LayoutOptions.Center,
-                VerticalOptions=LayoutOptions.Center
                 
-                };
-                panel.Children.Add(image);
-                panel.Children.Add(agentNamelabel);
-                panel.Children.Add(label);
-                cp.Content =panel;
-                await Application.Current.MainPage.Navigation.PushAsync(cp);
+                SelectedAgent = selectedAgentObject;
+                string loc = selectedAgentObject.AgentLocation;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    // https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
+                    await Launcher.OpenAsync("http://maps.apple.com/?q=394+Pacific+Ave+San+Francisco+CA");
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    // open the maps app directly
+                    await Launcher.OpenAsync($"geo:0,0?q=394+{loc}");
+                }
+                else if (Device.RuntimePlatform == Device.UWP)
+                {
+                    await Launcher.OpenAsync("bingmaps:?where=394 Pacific Ave San Francisco CA");
+                }
+                //ContentPage cp = new ContentPage();
+                //cp.Title = "Location Tracking Page";
+                //Label label = new Label();
+                //label.Text = selectedAgentObject.AgentDecription;
+                //Label agentNamelabel = new Label();
+                //agentNamelabel.Text = selectedAgentObject.AgentName;
+                //Image image = new Image();
+                //image.HeightRequest = 50;
+                //image.WidthRequest = 50;
+                //image.Source = "appbg.png";
+                //StackLayout panel = new StackLayout { 
+                //HorizontalOptions=LayoutOptions.Center,
+                //VerticalOptions=LayoutOptions.Center
+
+                //};
+                //panel.Children.Add(image);
+                //panel.Children.Add(agentNamelabel);
+                //panel.Children.Add(label);
+                //cp.Content =panel;
+                //await Application.Current.MainPage.Navigation.PushAsync(new LocationTrackingOfAgent(SelectedAgent));
 
             });
             AddAgentCommand = new Command((agent) =>

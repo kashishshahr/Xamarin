@@ -19,6 +19,16 @@
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="{StaticResource primaryEntryBackgroundColor}" />
         </Style>
+        <Style TargetType="Editor">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="AutoSize" Value="TextChanges" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="PlaceholderColor" Value="Gray" />
+            <Setter Property="WidthRequest" Value="250" />
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="AgentAddingStack" VerticalOptions="Center">
@@ -52,14 +62,14 @@
                                     Margin="0,0,15,0"
                                     FontAttributes="None"
                                     HorizontalOptions="FillAndExpand"
-                                    Placeholder="Agent's Name" />
+                                    Placeholder="Agent's Name"
+                                    Text="Devansh" />
                             </StackLayout>
 
                         </Frame>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0">
                         <Frame
-                            
                             Margin="0"
                             Padding="2"
                             BorderColor="DarkGray"
@@ -72,20 +82,53 @@
                                     BackgroundColor="AliceBlue"
                                     CornerRadius="50"
                                     HeightRequest="35"
-                                    HorizontalOptions="Start"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
                                     WidthRequest="35">
                                     <Image Source="descriptionIcon.png" />
 
                                 </Frame>
+
                                 <Editor
                                     x:Name="AgentDescriptionEntry"
                                     Margin="0,0,15,0"
+                                    FontSize="12"
                                     HorizontalOptions="FillAndExpand"
                                     Keyboard="Email"
-                                    
                                     Placeholder="Agent's Decription"
                                     PlaceholderColor="Gray"
+                                    Text="Lorem Ipsum"
                                     TextColor="White" />
+
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0">
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            BorderColor="DarkGray"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Margin="7"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="50"
+                                    HeightRequest="35"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    WidthRequest="35">
+                                    <Image Source="mapPinIcon.png" />
+
+                                </Frame>
+
+                                <Editor
+                                    x:Name="AgentLocationEntry"
+                                    Placeholder="Agent's Location"
+                                    Text="10,Eaglewing ct,scarborough" />
                             </StackLayout>
 
                         </Frame>
@@ -106,18 +149,18 @@
                                     HeightRequest="35"
                                     HorizontalOptions="Start"
                                     WidthRequest="35">
-                                    <Image Aspect="AspectFit" Source="imageIcon.png" />
+                                    <Image Source="imageIcon.png" />
+
                                 </Frame>
-                                <Entry
+                                <Editor
                                     x:Name="AgentImageUrlEntry"
-                                    Margin="0,0,15,0"
-                                    FontAttributes="None"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Agent's Image Url" />
+                                    Placeholder="Agent's Image Url"
+                                    Text="https://www.shareicon.net/data/512x512/2016/05/26/771203_man_512x512.png" />
                             </StackLayout>
 
                         </Frame>
                     </StackLayout>
+
                     <Button
                         Margin="0,0,0,10"
                         Padding="50,0,50,0"

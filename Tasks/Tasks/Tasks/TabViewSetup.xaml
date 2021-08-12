@@ -291,7 +291,7 @@
                         Text="AGENTS" />
                     <CollectionView
                         Margin="0,15,0,0"
-                        ItemsSource="{Binding Agents}"
+                        ItemsSource="{Binding CollectionOfAgents}"
                         SelectionMode="None">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />

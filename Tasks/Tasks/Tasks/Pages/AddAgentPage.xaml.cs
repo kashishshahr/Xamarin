@@ -37,7 +37,9 @@ namespace Tasks.Pages
                 AgentName = AgentNameEntry.Text,
                 AgentDecription = AgentDescriptionEntry.Text,
                 AgentImageUrl = AgentImageUrlEntry.Text,
-                IsAssigned = false
+                AgentLocation=AgentLocationEntry.Text
+                ,
+                IsAssigned = 2
 
             };
             agentViewModel.AddAgentCommand.Execute(agent);

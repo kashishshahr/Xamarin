@@ -12,9 +12,9 @@ namespace Tasks.Models
 
 
         
-        private bool isAssigned;
+        private int isAssigned;
 
-        public bool IsAssigned
+        public int IsAssigned
         {
             get { return isAssigned; }
             set { isAssigned = value; }
@@ -33,6 +33,8 @@ namespace Tasks.Models
         public string AgentName { get { return _agentName; } set { _agentName = value; } }
         private string _agentDescription;
         public string AgentDecription { get { return _agentDescription; } set { _agentDescription= value; } }
+        private string _agentLocation;
+        public string AgentLocation { get { return _agentLocation; } set { _agentLocation = value; } }
         private string _agentImageUrl;
 
         
